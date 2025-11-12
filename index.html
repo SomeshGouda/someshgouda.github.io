@@ -23,35 +23,36 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
+  width: 60px;
+  height: auto;
+  z-index: 2000;
+  transition: width 0.4s ease-in-out, background 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  overflow: hidden;
   background: transparent;
   border: none;
-  padding: 10px;
-  z-index: 2000;
-  transition: all 0.3s ease;
-  width: 60px;
-  overflow: hidden;
 }
 #sidebar.expanded {
   width: 260px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.25);
-  padding: 15px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.25);
   backdrop-filter: blur(8px);
+  padding: 15px;
 }
 
 #menu-toggle {
   cursor: pointer;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #0a58ca;
   transition: transform 0.4s ease;
+  margin: 10px;
 }
 #menu-toggle.rotate { transform: rotate(180deg); }
 
 #sidebar-content {
   opacity: 0;
   display: none;
-  transition: opacity 0.3s ease-in;
+  transition: opacity 0.4s ease-in-out;
 }
 #sidebar.expanded #sidebar-content {
   display: block;
@@ -97,8 +98,6 @@ body {
 #contact .social-icons a {
   flex: 0 0 calc(33.33% - 10px);
   text-align: center;
-  font-size: 1.3rem;
-  color: #0a58ca;
   background: #eef3ff;
   padding: 10px;
   border-radius: 50%;
@@ -108,6 +107,10 @@ body {
   transform: scale(1.2);
   background: #0a58ca;
   color: #fff;
+}
+#contact .social-icons img {
+  width: 26px;
+  height: 26px;
 }
 
 /* ---------- Header ---------- */
@@ -119,7 +122,6 @@ h1 {
   font-size: 2.6rem;
   color: #0a58ca;
   font-weight: 700;
-  text-align: center;
 }
 h1 span {
   display: inline-block;
@@ -151,7 +153,6 @@ section {
 h2 {
   color: #0a58ca;
   margin-bottom: 10px;
-  text-align: center;
 }
 p {
   line-height: 1.6;
@@ -168,8 +169,6 @@ p {
 }
 .social-icons a {
   position: relative;
-  font-size: 1.6rem;
-  color: #555;
   text-decoration: none;
   padding: 10px;
   border-radius: 50%;
@@ -177,27 +176,13 @@ p {
   transition: transform .3s, background .3s, color .3s;
   overflow: hidden;
 }
-.social-icons a[title="LinkedIn"]:hover { background: #0077b5; color: #fff; }
-.social-icons a[title="GitHub"]:hover { background: #24292e; color: #fff; }
-.social-icons a[title="Instagram"]:hover { background: #e1306c; color: #fff; }
-.social-icons a[title="YouTube"]:hover { background: #ff0000; color: #fff; }
-.social-icons a[title="Gmail"]:hover { background: #d93025; color: #fff; }
 .social-icons a:hover { transform: scale(1.2); }
-
-.ripple {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  background: rgba(255,255,255,.5);
-  border-radius: 50%;
-  transform: translate(-50%,-50%) scale(0);
-  animation: ripple .5s linear;
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
 }
-@keyframes ripple {
-  to { transform: translate(-50%,-50%) scale(8); opacity: 0; }
-}
+.social-icons a:hover img { transform: scale(1.2); }
 
 /* ---------- Footer ---------- */
 footer {
@@ -206,6 +191,7 @@ footer {
   background: #f2f6ff;
   border-top: 1px solid #dde4f0;
   width: 100%;
+  text-align: center;
   font-size: .9rem;
   color: #555;
 }
@@ -217,21 +203,7 @@ footer {
   font-size: 1.2rem;
 }
 
-/* ---------- Offline ---------- */
-#offline-msg {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #fff;
-  z-index: 4000;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-#offline-msg img { width: 130px; margin-bottom: 20px; }
-
+/* ---------- Animations ---------- */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -272,11 +244,11 @@ footer {
 
     <div id="contact" class="tab">
       <div class="social-icons">
-        <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><i class="fab fa-google"></i></a>
+        <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/SomeshGouda" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/somesh___09/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="mailto:cx27somesh@gmail.com" target="_blank"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail"></a>
       </div>
     </div>
   </div>
@@ -306,11 +278,11 @@ footer {
 <section id="connect">
   <h2>Connect With Me 🌐</h2>
   <div class="social-icons">
-    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><i class="fab fa-google"></i></a>
+    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/SomeshGouda" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/somesh___09/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="mailto:cx27somesh@gmail.com" target="_blank"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail"></a>
   </div>
   <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
@@ -319,16 +291,10 @@ footer {
   <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
 </footer>
 
-<div id="offline-msg">
-  <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog">
-  <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
-  <p>Please check your internet connection and try again.</p>
-</div>
-
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* Typing Animation */
+/* Smooth Typing Animation */
 const typing=document.getElementById('typing');
 const phrases=["Python","SQL","Excel","Visualize Insights"];
 let i=0,j=0,isDel=false,finished=false;
@@ -349,17 +315,7 @@ function typeEffect(){
 }
 typeEffect();
 
-/* Ripple */
-document.querySelectorAll('.social-icons a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    let r=document.createElement('span');
-    r.className='ripple';
-    a.appendChild(r);
-    setTimeout(()=>r.remove(),400);
-  });
-});
-
-/* Sidebar toggle + outside click close */
+/* Sidebar Toggle (Smooth + Outside Click Close) */
 const sidebar=document.getElementById('sidebar');
 const menu=document.getElementById('menu-toggle');
 menu.onclick=(e)=>{
@@ -373,21 +329,6 @@ document.addEventListener('click',e=>{
     menu.classList.remove('rotate');
   }
 });
-
-/* Tabs */
-document.querySelectorAll('.tab-buttons button').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const t=btn.dataset.tab;
-    document.querySelectorAll('#sidebar .tab').forEach(tab=>tab.classList.remove('active'));
-    document.getElementById(t).classList.add('active');
-  };
-});
-
-/* Offline */
-window.addEventListener('offline',()=>document.getElementById('offline-msg').style.display='flex');
-window.addEventListener('online',()=>document.getElementById('offline-msg').style.display='none');
 </script>
 </body>
 </html>
