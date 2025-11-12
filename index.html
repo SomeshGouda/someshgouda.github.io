@@ -27,7 +27,6 @@ body {
   border: none;
   padding: 10px;
   z-index: 2000;
-  /* Updated transition for smooth shrink */
   transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   width: 60px;
   overflow: hidden;
@@ -49,13 +48,11 @@ body {
 }
 #menu-toggle.rotate { transform: rotate(180deg); }
 
-/* Updated transition for fast fade-out */
 #sidebar-content {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.15s ease-out, visibility 0s 0.15s;
 }
-/* Updated transition for delayed fade-in */
 #sidebar.expanded #sidebar-content {
   visibility: visible;
   opacity: 1;
@@ -221,8 +218,15 @@ footer {
   width: 100%;
   font-size: .9rem;
   color: #555;
-  text-align: center; /* This will now work correctly */
+  /* Removed text-align: center from footer itself */
 }
+
+/* Added to center align the paragraph content inside the footer */
+footer p {
+  text-align: center;
+  margin: 0; /* Remove default paragraph margin */
+}
+
 .mahadev {
   font-weight: 700;
   color: #0a58ca;
