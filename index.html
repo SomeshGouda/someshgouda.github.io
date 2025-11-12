@@ -23,39 +23,38 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
-  background: rgba(255,255,255,0.4);
-  border: 2px solid rgba(10,88,202,0.4);
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.15);
-  padding: 15px;
+  background: transparent;
+  border: none;
+  padding: 10px;
   z-index: 2000;
   transition: all 0.3s ease;
   width: 60px;
   overflow: hidden;
-  backdrop-filter: blur(8px);
 }
 #sidebar.expanded {
   width: 260px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
   box-shadow: 0 0 18px rgba(0,0,0,0.25);
+  padding: 15px;
+  backdrop-filter: blur(8px);
 }
 
 #menu-toggle {
   cursor: pointer;
   font-size: 1.6rem;
   color: #0a58ca;
-  margin-bottom: 10px;
   transition: transform 0.4s ease;
 }
-#menu-toggle.rotate {
-  transform: rotate(180deg);
-}
+#menu-toggle.rotate { transform: rotate(180deg); }
 
 #sidebar-content {
   opacity: 0;
-  transition: opacity 0.4s ease-in;
+  display: none;
+  transition: opacity 0.3s ease-in;
 }
 #sidebar.expanded #sidebar-content {
+  display: block;
   opacity: 1;
 }
 
@@ -213,8 +212,9 @@ footer {
 .mahadev {
   font-weight: 700;
   color: #0a58ca;
-  margin-top: 10px;
-  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 1.2rem;
 }
 
 /* ---------- Offline ---------- */
@@ -328,7 +328,7 @@ footer {
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* ---------- Typing Animation ---------- */
+/* Typing Animation */
 const typing=document.getElementById('typing');
 const phrases=["Python","SQL","Excel","Visualize Insights"];
 let i=0,j=0,isDel=false,finished=false;
@@ -349,7 +349,7 @@ function typeEffect(){
 }
 typeEffect();
 
-/* ---------- Ripple ---------- */
+/* Ripple */
 document.querySelectorAll('.social-icons a').forEach(a=>{
   a.addEventListener('click',()=>{
     let r=document.createElement('span');
@@ -359,15 +359,22 @@ document.querySelectorAll('.social-icons a').forEach(a=>{
   });
 });
 
-/* ---------- Sidebar ---------- */
+/* Sidebar toggle + outside click close */
 const sidebar=document.getElementById('sidebar');
 const menu=document.getElementById('menu-toggle');
-menu.onclick=()=>{
+menu.onclick=(e)=>{
+  e.stopPropagation();
   sidebar.classList.toggle('expanded');
   menu.classList.toggle('rotate');
 };
+document.addEventListener('click',e=>{
+  if(!sidebar.contains(e.target)){
+    sidebar.classList.remove('expanded');
+    menu.classList.remove('rotate');
+  }
+});
 
-/* ---------- Tabs ---------- */
+/* Tabs */
 document.querySelectorAll('.tab-buttons button').forEach(btn=>{
   btn.onclick=()=>{
     document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
@@ -378,7 +385,7 @@ document.querySelectorAll('.tab-buttons button').forEach(btn=>{
   };
 });
 
-/* ---------- Offline Message ---------- */
+/* Offline */
 window.addEventListener('offline',()=>document.getElementById('offline-msg').style.display='flex');
 window.addEventListener('online',()=>document.getElementById('offline-msg').style.display='none');
 </script>
