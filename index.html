@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg, #d7e8ff, #f4f9ff);
+  background: linear-gradient(135deg,#d7e8ff,#f4f9ff);
   color: #222;
   text-align: center;
   overflow-x: hidden;
@@ -24,19 +23,21 @@ body {
   position: fixed;
   top: 20px;
   left: 20px;
-  background: #fff;
-  border: 2px solid #0a58ca;
+  background: rgba(255,255,255,0.4);
+  border: 2px solid rgba(10,88,202,0.4);
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
   padding: 15px;
   z-index: 2000;
-  transition: width 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   width: 60px;
   overflow: hidden;
+  backdrop-filter: blur(8px);
 }
 #sidebar.expanded {
   width: 260px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
 }
 
 #menu-toggle {
@@ -44,13 +45,15 @@ body {
   font-size: 1.6rem;
   color: #0a58ca;
   margin-bottom: 10px;
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
 }
-#menu-toggle:hover { transform: rotate(90deg); }
+#menu-toggle.rotate {
+  transform: rotate(180deg);
+}
 
 #sidebar-content {
   opacity: 0;
-  transition: opacity 0.3s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 #sidebar.expanded #sidebar-content {
   opacity: 1;
@@ -76,23 +79,16 @@ body {
   background: #0a58ca;
   color: #fff;
 }
-.tab {
-  display: none;
-}
-.tab.active {
-  display: block;
-}
+.tab { display: none; }
+.tab.active { display: block; }
 #sidebar p, #sidebar ul {
   font-size: .95rem;
   color: #333;
   line-height: 1.5;
   text-align: left;
 }
-#sidebar ul {
-  padding-left: 20px;
-}
+#sidebar ul { padding-left: 20px; }
 
-/* Sidebar Social Icons */
 #contact .social-icons {
   display: flex;
   flex-wrap: wrap;
@@ -106,7 +102,7 @@ body {
   color: #0a58ca;
   background: #eef3ff;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 50%;
   transition: all 0.3s ease;
 }
 #contact .social-icons a:hover {
@@ -161,6 +157,7 @@ h2 {
 p {
   line-height: 1.6;
   color: #333;
+  text-align: justify;
 }
 
 /* ---------- Social icons ---------- */
@@ -243,13 +240,12 @@ footer {
   from { opacity: 0; transform: translateY(-20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-a.email { color: #222; text-decoration: underline; }
 </style>
 </head>
 
 <body>
 
+<!-- Sidebar -->
 <div id="sidebar">
   <div id="menu-toggle"><i class="fas fa-bars"></i></div>
   <div id="sidebar-content">
@@ -280,41 +276,41 @@ a.email { color: #222; text-decoration: underline; }
         <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" title="Gmail"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail" width="26" height="26"></a>
+        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><i class="fab fa-google"></i></a>
       </div>
     </div>
   </div>
 </div>
 
 <header>
-  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong></h1>
+  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong> ✨</h1>
   <h3 id="typing"></h3>
 </header>
 
 <section id="about">
-  <h2>About Me</h2>
-  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights. 
-  Skilled in Python, SQL & Excel, I create automated dashboards and reports that help teams make smart decisions. 
-  I’m a quick learner, open to new technologies, and believe in continuous self-improvement through curiosity and practice.</p>
+  <h2>About Me 🌟</h2>
+  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights 📊. 
+  Skilled in <b>Python</b>, <b>SQL</b>, & <b>Excel</b>, I create automated dashboards and reports that help teams make smart decisions 💡. 
+  I’m a quick learner, open to new technologies, and believe in continuous self-improvement through curiosity and practice 🚀.</p>
 </section>
 
 <section id="education">
-  <h2>Education & Background</h2>
-  <p>🎓 <strong>10th:</strong> Gopabandhu High School, Polasara<br>
-     🎓 <strong>12th:</strong> Polasara Secondary High School<br>
-     🎓 <strong>Graduation (BCA):</strong> Presidency College — Berhampur University<br>
-     📍 <strong>Location:</strong> Berhampur, Ganjam District, Odisha<br>
-     🎯 <strong>Aspiring to be a Data Analyst</strong> — currently learning <b>Power BI, SQL, Python, Excel,</b> and <b>Data Visualization</b> to build strong analytical and visualization skills.</p>
+  <h2>Education & Background 🎓</h2>
+  <p><b>10th:</b> Gopabandhu High School, Polasara<br>
+     <b>12th:</b> Polasara Secondary High School<br>
+     <b>Graduation (BCA):</b> Presidency College — Berhampur University<br>
+     📍 <b>Location:</b> Berhampur, Ganjam District, Odisha<br>
+     🎯 <b>Aspiring to be a Data Analyst</b> — currently learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, and <b>Data Visualization</b> to strengthen analytical & visualization skills 📈.</p>
 </section>
 
 <section id="connect">
-  <h2>Connect With Me</h2>
+  <h2>Connect With Me 🌐</h2>
   <div class="social-icons">
     <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" title="Gmail"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail" width="30" height="30"></a>
+    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><i class="fab fa-google"></i></a>
   </div>
   <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
@@ -330,65 +326,61 @@ a.email { color: #222; text-decoration: underline; }
 </div>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 
 /* ---------- Typing Animation ---------- */
-const typing = document.getElementById('typing');
-const phrases = ["Python", "SQL", "Excel", "Visualize Insights"];
-let i = 0, j = 0, isDel = false, finished = false;
-function typeEffect() {
-  if (finished) return;
-  let current = phrases[i];
-  typing.textContent = current.substring(0, j);
-  if (!isDel && j < current.length) j++;
-  else if (!isDel && j === current.length) { isDel = true; setTimeout(typeEffect, 800); return; }
-  else if (isDel && j > 0) j--;
-  else if (isDel && j === 0) {
-    isDel = false; i++;
-    if (i === phrases.length) {
-      finished = true;
-      setTimeout(() => { typing.textContent = "Welcome to my website 😊"; }, 700);
+const typing=document.getElementById('typing');
+const phrases=["Python","SQL","Excel","Visualize Insights"];
+let i=0,j=0,isDel=false,finished=false;
+function typeEffect(){
+  if(finished)return;
+  let current=phrases[i];
+  typing.textContent=current.substring(0,j);
+  if(!isDel&&j<current.length){j++;}
+  else if(!isDel&&j===current.length){isDel=true;setTimeout(typeEffect,800);return;}
+  else if(isDel&&j>0){j--;}
+  else if(isDel&&j===0){isDel=false;i++;
+    if(i===phrases.length){
+      finished=true;
+      setTimeout(()=>{typing.textContent="Welcome to my website 😊";},700);
       return;
-    }
-  }
-  setTimeout(typeEffect, isDel ? 60 : 110);
+    }}
+  setTimeout(typeEffect,isDel?60:110);
 }
 typeEffect();
 
 /* ---------- Ripple ---------- */
-document.querySelectorAll('.social-icons a').forEach(a => {
-  a.addEventListener('click', () => {
-    let r = document.createElement('span');
-    r.className = 'ripple';
+document.querySelectorAll('.social-icons a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    let r=document.createElement('span');
+    r.className='ripple';
     a.appendChild(r);
-    setTimeout(() => r.remove(), 400);
+    setTimeout(()=>r.remove(),400);
   });
 });
 
-/* ---------- Offline ---------- */
-window.addEventListener('offline', () => {
-  document.getElementById('offline-msg').style.display = 'flex';
-});
-window.addEventListener('online', () => {
-  document.getElementById('offline-msg').style.display = 'none';
-});
-
 /* ---------- Sidebar ---------- */
-const sidebar = document.getElementById('sidebar');
-document.getElementById('menu-toggle').onclick = () => {
+const sidebar=document.getElementById('sidebar');
+const menu=document.getElementById('menu-toggle');
+menu.onclick=()=>{
   sidebar.classList.toggle('expanded');
+  menu.classList.toggle('rotate');
 };
 
-document.querySelectorAll('.tab-buttons button').forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll('.tab-buttons button').forEach(b => b.classList.remove('active'));
+/* ---------- Tabs ---------- */
+document.querySelectorAll('.tab-buttons button').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    const t = btn.dataset.tab;
-    document.querySelectorAll('#sidebar .tab').forEach(tab => tab.classList.remove('active'));
+    const t=btn.dataset.tab;
+    document.querySelectorAll('#sidebar .tab').forEach(tab=>tab.classList.remove('active'));
     document.getElementById(t).classList.add('active');
   };
 });
-</script>
 
+/* ---------- Offline Message ---------- */
+window.addEventListener('offline',()=>document.getElementById('offline-msg').style.display='flex');
+window.addEventListener('online',()=>document.getElementById('offline-msg').style.display='none');
+</script>
 </body>
 </html>
