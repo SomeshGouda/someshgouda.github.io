@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,81 +10,246 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-body{
-  margin:0;font-family:'Segoe UI',Arial,sans-serif;
-  background:linear-gradient(135deg,#d7e8ff,#f4f9ff);
-  color:#222;text-align:center;overflow-x:hidden;
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #d7e8ff, #f4f9ff);
+  color: #222;
+  text-align: center;
+  overflow-x: hidden;
 }
 
 /* ---------- Sidebar ---------- */
-#sidebar{
-  position:fixed;top:20px;left:20px;
-  background:#fff;border:2px solid #0a58ca;border-radius:10px;
-  box-shadow:0 0 10px rgba(0,0,0,0.15);
-  padding:15px;z-index:2000;transition:all .3s ease;
-  width:60px;overflow:hidden;
+#sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #fff;
+  border: 2px solid #0a58ca;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  z-index: 2000;
+  transition: width 0.3s ease, box-shadow 0.3s ease;
+  width: 60px;
+  overflow: hidden;
 }
-#sidebar.expanded{width:260px;}
-#menu-toggle{cursor:pointer;font-size:1.6rem;color:#0a58ca;margin-bottom:10px;}
-#sidebar-content{display:none;text-align:left;}
-#sidebar.expanded #sidebar-content{display:block;}
-.tab-buttons{display:flex;gap:5px;margin-bottom:10px;}
-.tab-buttons button{
-  flex:1;border:none;padding:8px;border-radius:6px;
-  background:#eef3ff;color:#0a58ca;font-weight:600;cursor:pointer;
+#sidebar.expanded {
+  width: 260px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
-.tab-buttons button.active{background:#0a58ca;color:#fff;}
-.tab{display:none;} .tab.active{display:block;}
-#sidebar p,#sidebar ul{font-size:.95rem;color:#333;line-height:1.5;text-align:left;}
-#sidebar ul{padding-left:20px;}
-.social-icons a{font-size:1.3rem;margin-right:10px;color:#0a58ca;}
+
+#menu-toggle {
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #0a58ca;
+  margin-bottom: 10px;
+  transition: transform 0.3s;
+}
+#menu-toggle:hover { transform: rotate(90deg); }
+
+#sidebar-content {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+#sidebar.expanded #sidebar-content {
+  opacity: 1;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.tab-buttons button {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  background: #eef3ff;
+  color: #0a58ca;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.tab-buttons button.active {
+  background: #0a58ca;
+  color: #fff;
+}
+.tab {
+  display: none;
+}
+.tab.active {
+  display: block;
+}
+#sidebar p, #sidebar ul {
+  font-size: .95rem;
+  color: #333;
+  line-height: 1.5;
+  text-align: left;
+}
+#sidebar ul {
+  padding-left: 20px;
+}
+
+/* Sidebar Social Icons */
+#contact .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+#contact .social-icons a {
+  flex: 0 0 calc(33.33% - 10px);
+  text-align: center;
+  font-size: 1.3rem;
+  color: #0a58ca;
+  background: #eef3ff;
+  padding: 10px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+#contact .social-icons a:hover {
+  transform: scale(1.2);
+  background: #0a58ca;
+  color: #fff;
+}
 
 /* ---------- Header ---------- */
-header{margin-top:80px;animation:fadeInDown 1s ease;}
-h1{font-size:2.6rem;color:#0a58ca;font-weight:700;}
-h1 span{display:inline-block;animation:wave 2s infinite;transform-origin:70% 70%;}
-@keyframes wave{0%,60%,100%{transform:rotate(0);}30%{transform:rotate(10deg);}}
-#typing{font-size:1.2rem;margin-top:8px;color:#444;min-height:24px;}
+header {
+  margin-top: 80px;
+  animation: fadeInDown 1s ease;
+}
+h1 {
+  font-size: 2.6rem;
+  color: #0a58ca;
+  font-weight: 700;
+  text-align: center;
+}
+h1 span {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+}
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0); }
+  30% { transform: rotate(10deg); }
+}
+#typing {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #444;
+  min-height: 24px;
+}
 
 /* ---------- Sections ---------- */
-section{
-  max-width:780px;width:90%;margin:25px auto;background:#fff;
-  border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.1);
-  padding:25px;animation:fadeIn 1.5s ease;
+section {
+  max-width: 780px;
+  width: 90%;
+  margin: 25px auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  animation: fadeIn 1.5s ease;
 }
-h2{color:#0a58ca;margin-bottom:10px;}
-p{line-height:1.6;color:#333;}
+h2 {
+  color: #0a58ca;
+  margin-bottom: 10px;
+  text-align: center;
+}
+p {
+  line-height: 1.6;
+  color: #333;
+}
 
 /* ---------- Social icons ---------- */
-.social-icons{
-  margin-top:15px;display:flex;justify-content:center;gap:15px;
+.social-icons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
-.social-icons a{
-  position:relative;font-size:1.6rem;color:#555;text-decoration:none;
-  padding:10px;border-radius:50%;background:#eef3ff;
-  transition:transform .3s,background .3s,color .3s;overflow:hidden;
+.social-icons a {
+  position: relative;
+  font-size: 1.6rem;
+  color: #555;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 50%;
+  background: #eef3ff;
+  transition: transform .3s, background .3s, color .3s;
+  overflow: hidden;
 }
-.social-icons a[title="LinkedIn"]:hover{background:#0077b5;color:#fff;}
-.social-icons a[title="GitHub"]:hover{background:#24292e;color:#fff;}
-.social-icons a[title="Instagram"]:hover{background:#e1306c;color:#fff;}
-.social-icons a[title="YouTube"]:hover{background:#ff0000;color:#fff;}
-.social-icons a[title="Gmail"]:hover{background:#d93025;color:#fff;}
-.social-icons a:hover{transform:scale(1.2);}
-.ripple{position:absolute;top:50%;left:50%;width:10px;height:10px;background:rgba(255,255,255,.5);border-radius:50%;transform:translate(-50%,-50%) scale(0);animation:ripple .5s linear;}
-@keyframes ripple{to{transform:translate(-50%,-50%) scale(8);opacity:0;}}
+.social-icons a[title="LinkedIn"]:hover { background: #0077b5; color: #fff; }
+.social-icons a[title="GitHub"]:hover { background: #24292e; color: #fff; }
+.social-icons a[title="Instagram"]:hover { background: #e1306c; color: #fff; }
+.social-icons a[title="YouTube"]:hover { background: #ff0000; color: #fff; }
+.social-icons a[title="Gmail"]:hover { background: #d93025; color: #fff; }
+.social-icons a:hover { transform: scale(1.2); }
+
+.ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,.5);
+  border-radius: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  animation: ripple .5s linear;
+}
+@keyframes ripple {
+  to { transform: translate(-50%,-50%) scale(8); opacity: 0; }
+}
 
 /* ---------- Footer ---------- */
-footer{margin-top:30px;padding:20px;background:#f2f6ff;border-top:1px solid #dde4f0;width:100%;font-size:.9rem;color:#555;}
-.mahadev{font-weight:700;color:#0a58ca;margin-top:10px;font-size:1.1rem;}
-#offline-msg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;z-index:4000;text-align:center;justify-content:center;align-items:center;flex-direction:column;}
-#offline-msg img{width:130px;margin-bottom:20px;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
-a.email{color:#222;text-decoration:underline;}
+footer {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f2f6ff;
+  border-top: 1px solid #dde4f0;
+  width: 100%;
+  font-size: .9rem;
+  color: #555;
+}
+.mahadev {
+  font-weight: 700;
+  color: #0a58ca;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+/* ---------- Offline ---------- */
+#offline-msg {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 4000;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#offline-msg img { width: 130px; margin-bottom: 20px; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+a.email { color: #222; text-decoration: underline; }
 </style>
 </head>
 
 <body>
+
 <div id="sidebar">
   <div id="menu-toggle"><i class="fas fa-bars"></i></div>
   <div id="sidebar-content">
@@ -92,12 +258,14 @@ a.email{color:#222;text-decoration:underline;}
       <button data-tab="edu">Education</button>
       <button data-tab="contact">Contact</button>
     </div>
+
     <div id="info" class="tab active">
       <p><b>Name:</b> Somesh Gouda<br>
          <b>City:</b> Berhampur<br>
          <b>District:</b> Ganjam<br>
          <b>State:</b> Odisha</p>
     </div>
+
     <div id="edu" class="tab">
       <ul>
         <li>10th – Gopabandhu High School, Polasara</li>
@@ -105,13 +273,14 @@ a.email{color:#222;text-decoration:underline;}
         <li>BCA – Presidency College (Berhampur University)</li>
       </ul>
     </div>
+
     <div id="contact" class="tab">
       <div class="social-icons">
         <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" title="Gmail"><i class="fab fa-google"></i></a>
+        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="mailto:cx27somesh@gmail.com" title="Gmail"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail" width="26" height="26"></a>
       </div>
     </div>
   </div>
@@ -144,8 +313,8 @@ a.email{color:#222;text-decoration:underline;}
     <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" title="Gmail"><i class="fab fa-google"></i></a>
+    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="mailto:cx27somesh@gmail.com" title="Gmail"><img src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail" width="30" height="30"></a>
   </div>
   <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
@@ -161,53 +330,65 @@ a.email{color:#222;text-decoration:underline;}
 </div>
 
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
 
 /* ---------- Typing Animation ---------- */
-const typing=document.getElementById('typing');
-const phrases=["Python","SQL","Excel","Visualize Insights"];
-let i=0,j=0,isDel=false,finished=false;
-function typeEffect(){
-  if(finished)return;
-  let current=phrases[i];
-  typing.textContent=current.substring(0,j);
-  if(!isDel&&j<current.length){j++;}
-  else if(!isDel&&j===current.length){isDel=true;setTimeout(typeEffect,800);return;}
-  else if(isDel&&j>0){j--;}
-  else if(isDel&&j===0){isDel=false;i++;
-    if(i===phrases.length){
-      finished=true;
-      setTimeout(()=>{typing.textContent="Welcome to my website 😊";},700);
+const typing = document.getElementById('typing');
+const phrases = ["Python", "SQL", "Excel", "Visualize Insights"];
+let i = 0, j = 0, isDel = false, finished = false;
+function typeEffect() {
+  if (finished) return;
+  let current = phrases[i];
+  typing.textContent = current.substring(0, j);
+  if (!isDel && j < current.length) j++;
+  else if (!isDel && j === current.length) { isDel = true; setTimeout(typeEffect, 800); return; }
+  else if (isDel && j > 0) j--;
+  else if (isDel && j === 0) {
+    isDel = false; i++;
+    if (i === phrases.length) {
+      finished = true;
+      setTimeout(() => { typing.textContent = "Welcome to my website 😊"; }, 700);
       return;
-    }}
-  setTimeout(typeEffect,isDel?60:110);
+    }
+  }
+  setTimeout(typeEffect, isDel ? 60 : 110);
 }
 typeEffect();
 
 /* ---------- Ripple ---------- */
-document.querySelectorAll('.social-icons a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    let r=document.createElement('span');r.className='ripple';a.appendChild(r);
-    setTimeout(()=>r.remove(),400);
+document.querySelectorAll('.social-icons a').forEach(a => {
+  a.addEventListener('click', () => {
+    let r = document.createElement('span');
+    r.className = 'ripple';
+    a.appendChild(r);
+    setTimeout(() => r.remove(), 400);
   });
 });
 
 /* ---------- Offline ---------- */
-window.addEventListener('offline',()=>{document.getElementById('offline-msg').style.display='flex';});
-window.addEventListener('online',()=>{document.getElementById('offline-msg').style.display='none';});
+window.addEventListener('offline', () => {
+  document.getElementById('offline-msg').style.display = 'flex';
+});
+window.addEventListener('online', () => {
+  document.getElementById('offline-msg').style.display = 'none';
+});
 
 /* ---------- Sidebar ---------- */
-const sidebar=document.getElementById('sidebar');
-document.getElementById('menu-toggle').onclick=()=>sidebar.classList.toggle('expanded');
-document.querySelectorAll('.tab-buttons button').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
+const sidebar = document.getElementById('sidebar');
+document.getElementById('menu-toggle').onclick = () => {
+  sidebar.classList.toggle('expanded');
+};
+
+document.querySelectorAll('.tab-buttons button').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tab-buttons button').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const t=btn.dataset.tab;
-    document.querySelectorAll('#sidebar .tab').forEach(tab=>tab.classList.remove('active'));
+    const t = btn.dataset.tab;
+    document.querySelectorAll('#sidebar .tab').forEach(tab => tab.classList.remove('active'));
     document.getElementById(t).classList.add('active');
   };
 });
 </script>
+
 </body>
 </html>
