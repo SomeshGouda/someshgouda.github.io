@@ -4,26 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Somesh Gouda - Portfolio</title>
-  <meta name="description" content="Portfolio of Somesh Gouda — Data Analyst skilled in Python, SQL, Excel & Dashboard Automation. Learn about my work, background, and connect with me." />
+  <meta name="description" content="Official portfolio of Somesh Gouda — Data Analyst skilled in Python, SQL, Excel, and Dashboard Automation. Connect and learn more about my work, background and skills." />
   <meta name="author" content="Somesh Gouda">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Somesh Gouda - Portfolio" />
-  <meta property="og:description" content="Official personal site of Somesh Gouda. Connect on LinkedIn, GitHub, Instagram, YouTube." />
-  <link rel="icon" href="https://img.icons8.com/emoji/48/briefcase-emoji.png" type="image/png">
-
+  <meta property="og:description" content="Personal website of Somesh Gouda — Data Analyst | Python | SQL | Excel | Dashboard Automation" />
+  <link rel="icon" href="https://img.icons8.com/emoji/48/briefcase-emoji.png" type="image/png" />
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
+    /* ---------- Base styles ---------- */
     body {
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #e0f1ff, #f7fbff);
+      background: linear-gradient(135deg, #d7e8ff, #f4f9ff);
       color: #222;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       text-align: center;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     header {
@@ -49,12 +51,13 @@
     }
 
     section {
-      max-width: 750px;
-      padding: 20px;
-      margin-top: 20px;
+      max-width: 780px;
+      width: 90%;
+      margin: 20px auto;
       background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      padding: 25px;
       animation: fadeIn 1.5s ease;
     }
 
@@ -68,28 +71,84 @@
       color: #333;
     }
 
+    /* ---------- Social icons ---------- */
     .social-icons {
-      margin-top: 15px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      position: relative;
     }
 
     .social-icons a {
-      color: #0a58ca;
+      position: relative;
       font-size: 1.6rem;
-      margin: 0 10px;
-      transition: transform 0.3s, color 0.3s;
+      color: #555;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 50%;
+      background: #eef3ff;
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+      overflow: hidden;
     }
+
+    /* Brand hover colours */
+    .social-icons a[title="LinkedIn"]:hover { background: #0077b5; color: #fff; }
+    .social-icons a[title="GitHub"]:hover { background: #24292e; color: #fff; }
+    .social-icons a[title="Instagram"]:hover { background: #e1306c; color: #fff; }
+    .social-icons a[title="YouTube"]:hover { background: #ff0000; color: #fff; }
 
     .social-icons a:hover {
       transform: scale(1.2);
-      color: #0056b3;
+    }
+
+    /* Ripple click effect */
+    .ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple 0.5s linear;
+    }
+
+    @keyframes ripple {
+      to {
+        transform: translate(-50%, -50%) scale(8);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- Offline Message ---------- */
+    #offline-msg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #offline-msg img {
+      width: 130px;
+      margin-bottom: 20px;
     }
 
     footer {
-      margin-top: auto;
+      margin-top: 30px;
       padding: 20px;
-      background: #f5f8ff;
+      background: #f2f6ff;
+      border-top: 1px solid #dde4f0;
       width: 100%;
-      border-top: 1px solid #d8e0f0;
       font-size: 0.9rem;
       color: #555;
     }
@@ -108,8 +167,16 @@
       color: #222;
       text-decoration: underline;
     }
+
+    .mahadev {
+      font-weight: 700;
+      color: #0a58ca;
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong></h1>
@@ -119,8 +186,8 @@
   <section id="about">
     <h2>About Me</h2>
     <p>
-      I’m <strong>Somesh Gouda</strong>, an Engineering Professional passionate about turning raw data into meaningful insights through analytics and automation.
-      I enjoy working with Python, SQL, and Excel to create dashboards and data models that drive smarter decisions.
+      I’m <strong>Somesh Gouda</strong>, an Engineering Professional passionate about transforming data into valuable insights.
+      I specialize in using Python, SQL, and Excel to design data dashboards and business solutions.
     </p>
   </section>
 
@@ -128,8 +195,8 @@
     <h2>Education & Background</h2>
     <p>
       🎓 <strong>Bachelor of Engineering</strong> in Computer Science — Bangalore, India<br>
-      🏡 Currently living in <strong>Bangalore</strong><br>
-      🎯 Aspiring to become a <strong>Data Engineer / Analyst</strong> specializing in data-driven solutions.
+      🏡 Currently based in <strong>Bangalore</strong><br>
+      🎯 Focused on becoming a <strong>Data Engineer / Analyst</strong> contributing to data-driven innovations.
     </p>
   </section>
 
@@ -143,16 +210,43 @@
       
       <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
-    
-    <p style="margin-top: 15px;">📧 <a class="email" href="mailto:cx27somesh@gmail.com">youremail@gmail.com</a></p>
+    <p style="margin-top: 20px;">
+      📧 <a class="email" href="mailto:cx27somesh@gmail.com">cx27somesh@gmail.com</a>
+    </p>
+    <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
   </section>
 
   <footer>
     <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
   </footer>
 
+  <div id="offline-msg">
+    <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog" />
+    <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
+    <p>Please check your internet connection and try again.</p>
+  </div>
+
   <script>
+    // Show current year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Ripple effect on social icons
+    document.querySelectorAll('.social-icons a').forEach(a => {
+      a.addEventListener('click', e => {
+        let ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        a.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 400);
+      });
+    });
+
+    // Offline detection
+    window.addEventListener('offline', () => {
+      document.getElementById('offline-msg').style.display = 'flex';
+    });
+    window.addEventListener('online', () => {
+      document.getElementById('offline-msg').style.display = 'none';
+    });
   </script>
 </body>
 </html>
