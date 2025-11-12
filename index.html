@@ -1,252 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Somesh Gouda - Portfolio</title>
-  <meta name="description" content="Official portfolio of Somesh Gouda — Data Analyst skilled in Python, SQL, Excel, and Dashboard Automation. Connect and learn more about my work, background and skills." />
-  <meta name="author" content="Somesh Gouda">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Somesh Gouda - Portfolio" />
-  <meta property="og:description" content="Personal website of Somesh Gouda — Data Analyst | Python | SQL | Excel | Dashboard Automation" />
-  <link rel="icon" href="https://img.icons8.com/emoji/48/briefcase-emoji.png" type="image/png" />
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Somesh Gouda - Portfolio</title>
+<meta name="description" content="Official portfolio of Somesh Gouda — Data Analyst skilled in Python, SQL, Excel, and Dashboard Automation." />
+<meta name="author" content="Somesh Gouda" />
+<link rel="icon" href="https://img.icons8.com/emoji/48/briefcase-emoji.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <style>
-    /* ---------- Base styles ---------- */
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #d7e8ff, #f4f9ff);
-      color: #222;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-    }
+<style>
+body{
+  margin:0;font-family:'Segoe UI',Arial,sans-serif;
+  background:linear-gradient(135deg,#d7e8ff,#f4f9ff);
+  color:#222;text-align:center;overflow-x:hidden;
+}
+#menu-btn{
+  position:fixed;top:15px;left:20px;
+  font-size:1.8rem;background:none;border:none;
+  color:#0a58ca;cursor:pointer;z-index:3000;
+}
+#sidebar{
+  position:fixed;top:0;left:-270px;width:250px;height:100%;
+  background:#fff;box-shadow:2px 0 10px rgba(0,0,0,.2);
+  padding:25px;transition:left .3s ease;overflow-y:auto;z-index:2500;
+}
+#sidebar.open{left:0;}
+#sidebar h3{color:#0a58ca;margin-bottom:5px;}
+#sidebar p,#sidebar ul{font-size:.95rem;color:#333;line-height:1.5;text-align:left;}
+#sidebar ul{padding-left:20px;}
 
-    header {
-      margin-top: 60px;
-      animation: fadeInDown 1s ease;
-    }
+header{margin-top:80px;animation:fadeInDown 1s ease;}
+h1{font-size:2.6rem;color:#0a58ca;font-weight:700;}
+h1 span{display:inline-block;animation:wave 2s infinite;transform-origin:70% 70%;}
+@keyframes wave{0%,60%,100%{transform:rotate(0deg);}30%{transform:rotate(10deg);}}
+#typing{font-size:1.2rem;margin-top:8px;color:#444;min-height:24px;}
 
-    h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #0a58ca;
-    }
-
-    h1 span {
-      display: inline-block;
-      animation: wave 2s infinite;
-      transform-origin: 70% 70%;
-    }
-
-    @keyframes wave {
-      0%, 60%, 100% { transform: rotate(0deg); }
-      30% { transform: rotate(10deg); }
-    }
-
-    section {
-      max-width: 780px;
-      width: 90%;
-      margin: 20px auto;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      padding: 25px;
-      animation: fadeIn 1.5s ease;
-    }
-
-    h2 {
-      color: #0a58ca;
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.6;
-      color: #333;
-    }
-
-    /* ---------- Social icons ---------- */
-    .social-icons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      position: relative;
-    }
-
-    .social-icons a {
-      position: relative;
-      font-size: 1.6rem;
-      color: #555;
-      text-decoration: none;
-      padding: 10px;
-      border-radius: 50%;
-      background: #eef3ff;
-      transition: transform 0.3s, background 0.3s, color 0.3s;
-      overflow: hidden;
-    }
-
-    /* Brand hover colours */
-    .social-icons a[title="LinkedIn"]:hover { background: #0077b5; color: #fff; }
-    .social-icons a[title="GitHub"]:hover { background: #24292e; color: #fff; }
-    .social-icons a[title="Instagram"]:hover { background: #e1306c; color: #fff; }
-    .social-icons a[title="YouTube"]:hover { background: #ff0000; color: #fff; }
-
-    .social-icons a:hover {
-      transform: scale(1.2);
-    }
-
-    /* Ripple click effect */
-    .ripple {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 10px;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      animation: ripple 0.5s linear;
-    }
-
-    @keyframes ripple {
-      to {
-        transform: translate(-50%, -50%) scale(8);
-        opacity: 0;
-      }
-    }
-
-    /* ---------- Offline Message ---------- */
-    #offline-msg {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      z-index: 9999;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    #offline-msg img {
-      width: 130px;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 20px;
-      background: #f2f6ff;
-      border-top: 1px solid #dde4f0;
-      width: 100%;
-      font-size: 0.9rem;
-      color: #555;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    a.email {
-      color: #222;
-      text-decoration: underline;
-    }
-
-    .mahadev {
-      font-weight: 700;
-      color: #0a58ca;
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-  </style>
+section{
+  max-width:780px;width:90%;margin:25px auto;background:#fff;
+  border-radius:15px;box-shadow:0 0 15px rgba(0,0,0,0.1);
+  padding:25px;animation:fadeIn 1.5s ease;
+}
+h2{color:#0a58ca;margin-bottom:10px;}
+p{line-height:1.6;color:#333;}
+.social-icons{
+  margin-top:15px;display:flex;justify-content:center;gap:15px;position:relative;
+}
+.social-icons a{
+  position:relative;font-size:1.6rem;color:#555;text-decoration:none;
+  padding:10px;border-radius:50%;background:#eef3ff;
+  transition:transform .3s,background .3s,color .3s;overflow:hidden;
+}
+.social-icons a[title="LinkedIn"]:hover{background:#0077b5;color:#fff;}
+.social-icons a[title="GitHub"]:hover{background:#24292e;color:#fff;}
+.social-icons a[title="Instagram"]:hover{background:#e1306c;color:#fff;}
+.social-icons a[title="YouTube"]:hover{background:#ff0000;color:#fff;}
+.social-icons a:hover{transform:scale(1.2);}
+.ripple{position:absolute;top:50%;left:50%;width:10px;height:10px;background:rgba(255,255,255,.5);border-radius:50%;transform:translate(-50%,-50%) scale(0);animation:ripple .5s linear;}
+@keyframes ripple{to{transform:translate(-50%,-50%) scale(8);opacity:0;}}
+footer{
+  margin-top:30px;padding:20px;background:#f2f6ff;
+  border-top:1px solid #dde4f0;width:100%;font-size:.9rem;color:#555;
+}
+.mahadev{font-weight:700;color:#0a58ca;margin-top:10px;font-size:1.1rem;}
+#offline-msg{
+  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#fff;z-index:4000;text-align:center;justify-content:center;align-items:center;flex-direction:column;
+}
+#offline-msg img{width:130px;margin-bottom:20px;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+a.email{color:#222;text-decoration:underline;}
+</style>
 </head>
 
 <body>
-  <header>
-    <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong></h1>
-    <p>Data Analyst | Python | SQL | Excel | Dashboard Automation</p>
-  </header>
+<button id="menu-btn">☰</button>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I’m <strong>Somesh Gouda</strong>, an Engineering Professional passionate about transforming data into valuable insights.
-      I specialize in using Python, SQL, and Excel to design data dashboards and business solutions.
-    </p>
-  </section>
-
-  <section id="education">
-    <h2>Education & Background</h2>
-    <p>
-      🎓 <strong>Bachelor of Engineering</strong> in Computer Science — Bangalore, India<br>
-      🏡 Currently based in <strong>Bangalore</strong><br>
-      🎯 Focused on becoming a <strong>Data Engineer / Analyst</strong> contributing to data-driven innovations.
-    </p>
-  </section>
-
-  <section id="connect">
-    <h2>Connect With Me</h2>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      
-      <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      
-      <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    </div>
-    <p style="margin-top: 20px;">
-      📧 <a class="email" href="mailto:cx27somesh@gmail.com">cx27somesh@gmail.com</a>
-    </p>
-    <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
-  </section>
-
-  <footer>
-    <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
-  </footer>
-
-  <div id="offline-msg">
-    <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog" />
-    <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
-    <p>Please check your internet connection and try again.</p>
+<div id="sidebar">
+  <h3>Personal Info</h3>
+  <p><b>Name:</b> Somesh Gouda<br>
+     <b>City:</b> Berhampur<br>
+     <b>District:</b> Ganjam<br>
+     <b>State:</b> Odisha</p><hr>
+  <h3>About Me</h3>
+  <p>I’m an Engineering graduate passionate about data analytics and automation.
+  I love exploring data patterns and presenting them in meaningful dashboards.</p><hr>
+  <h3>Education</h3>
+  <ul>
+    <li>10th – Gopabandhu High School, Polasara</li>
+    <li>12th – Polasara Secondary High School</li>
+    <li>BCA – Presidency College (Berhampur University)</li>
+  </ul><hr>
+  <h3>Contact Me</h3>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
   </div>
+</div>
 
-  <script>
-    // Show current year
-    document.getElementById("year").textContent = new Date().getFullYear();
+<header>
+  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong></h1>
+  <h3 id="typing"></h3>
+</header>
 
-    // Ripple effect on social icons
-    document.querySelectorAll('.social-icons a').forEach(a => {
-      a.addEventListener('click', e => {
-        let ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        a.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 400);
-      });
-    });
+<section id="about">
+  <h2>About Me</h2>
+  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights.  
+  Skilled in Python, SQL & Excel, I create automated dashboards and reports that help teams make smart decisions.  
+  I’m a quick learner, open to new technologies, and I believe in continuous self-improvement through practice and curiosity.</p>
+</section>
 
-    // Offline detection
-    window.addEventListener('offline', () => {
-      document.getElementById('offline-msg').style.display = 'flex';
-    });
-    window.addEventListener('online', () => {
-      document.getElementById('offline-msg').style.display = 'none';
-    });
-  </script>
+<section id="education">
+  <h2>Education & Background</h2>
+  <p>
+    🎓 <strong>10th:</strong> Gopabandhu High School, Polasara<br>
+    🎓 <strong>12th:</strong> Polasara Secondary High School<br>
+    🎓 <strong>Graduation (BCA):</strong> Presidency College — Berhampur University<br>
+    🏡 Based in <strong>Berhampur, Ganjam District, Odisha</strong><br>
+    🎯 Aspiring to excel as a Data Engineer / Analyst and build creative data-driven solutions.
+  </p>
+</section>
+
+<section id="connect">
+  <h2>Connect With Me</h2>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
+  <p style="margin-top:20px;">📧 <a class="email" href="mailto:cx27somesh@gmail.com">cx27somesh@gmail.com</a></p>
+  <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
+</footer>
+
+<div id="offline-msg">
+  <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog" />
+  <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
+  <p>Please check your internet connection and try again.</p>
+</div>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// Typing effect
+const words=["Welcome to my website","I’m a passionate Data Analyst","Python • SQL • Excel • Automation"];
+let i=0,j=0,isDel=false;
+function type(){
+  const w=words[i];
+  document.getElementById('typing').textContent=w.substring(0,j);
+  if(!isDel&&j++===w.length){isDel=true;setTimeout(type,1200);}
+  else if(isDel&&j--===0){isDel=false;i=(i+1)%words.length;}
+  setTimeout(type,isDel?40:100);
+}
+type();
+
+// Ripple effect
+document.querySelectorAll('.social-icons a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    let r=document.createElement('span');
+    r.className='ripple';a.appendChild(r);
+    setTimeout(()=>r.remove(),400);
+  });
+});
+
+// Offline/online check
+window.addEventListener('offline',()=>{document.getElementById('offline-msg').style.display='flex';});
+window.addEventListener('online',()=>{document.getElementById('offline-msg').style.display='none';});
+
+// Sidebar toggle
+document.getElementById('menu-btn').onclick=()=>{
+  document.getElementById('sidebar').classList.toggle('open');
+};
+</script>
 </body>
 </html>
