@@ -1,38 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="c5mWYekvZTQY2whQo4qqJTT5zueihc-tALVI5vLgpyE" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Somesh Gouda - Data Analyst</title>
-  <meta name="description" content="Official website of Somesh Gouda. Connect with me on LinkedIn, GitHub, YouTube, and Instagram.">
+  <meta name="description" content="Official portfolio of Somesh Gouda — Data Analyst skilled in Python, SQL, Excel, and Dashboard Automation. Connect with me on LinkedIn, GitHub, Instagram, and YouTube.">
   <meta name="author" content="Somesh Gouda">
   <meta name="robots" content="index, follow">
-
   <meta property="og:title" content="Somesh Gouda - Portfolio" />
   <meta property="og:description" content="Data Analyst | Python | SQL | Excel | GitHub Projects" />
+  <link rel="icon" href="https://img.icons8.com/emoji/48/handshake.png" type="image/png" />
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: linear-gradient(135deg, #d4e4ff, #f5faff);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      animation: fadeInDown 1s ease;
+    }
+
+    h1 span {
+      display: inline-block;
+      animation: wave 2s infinite;
+      transform-origin: 70% 70%;
+    }
+
+    @keyframes wave {
+      0%, 60%, 100% { transform: rotate(0deg); }
+      30% { transform: rotate(10deg); }
+    }
+
+    p.role {
+      font-size: 1.1rem;
+      color: #444;
+      animation: fadeIn 2s ease;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      color: #0a58ca;
+      animation: fadeInUp 2s ease;
+    }
+
+    a {
+      color: #0a58ca;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 10px;
+      position: relative;
+    }
+
+    a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #0a58ca;
+      transition: width 0.3s;
+      margin: 0 auto;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: #555;
+      font-size: 0.9rem;
+      animation: fadeIn 3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .contact a {
+      color: #222;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 
-<body style="font-family:Arial, sans-serif; margin: 40px; text-align: center;">
-  <h1>👋 Hi, I'm Somesh Gouda</h1>
-  <p>Data Analyst | Python | SQL | Excel | Dashboard Automation</p>
-  
-  <h2>🌐 Connect With Me</h2>
-  <p>
-    <a href="https://www.linkedin.com/in/somesh-gouda-1020a432b/" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/Someshkumar09" target="_blank">GitHub</a> |
-    <a href="https://www.instagram.com/somesh___09/" target="_blank">Instagram</a> |
-    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank">YouTube</a>
-  </p>
+<body>
+  <main>
+    <h1><span>👋</span> Hi, I'm Somesh Gouda</h1>
+    <p class="role">Data Analyst | Python | SQL | Excel | Dashboard Automation</p>
 
-  <p>📧 Contact: <a href="mailto:youremail@gmail.com">youremail@gmail.com</a></p>
+    <h2>🌐 Connect With Me</h2>
+    <p>
+      <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank">LinkedIn</a> |
+      
+      <a href="https://github.com/SomeshGouda" target="_blank">GitHub</a> |
+      
+      <a href="https://www.instagram.com/somesh___09/" target="_blank">Instagram</a> |
+      
+      <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q&si=jwGasI7GB0ynOlOB" target="_blank">YouTube</a>
+    </p>
 
-  <footer style="margin-top:30px; color:gray;">
+    <div class="contact">
+      📧 Contact: <a href="mailto:youremail@gmail.com">youremail@gmail.com</a>
+    </div>
+  </main>
+
+  <footer>
     © <span id="year"></span> Somesh Gouda
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
