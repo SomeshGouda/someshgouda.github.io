@@ -27,7 +27,8 @@ body {
   border: none;
   padding: 10px;
   z-index: 2000;
-  transition: all 0.3s ease;
+  /* Updated transition for smooth shrink */
+  transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   width: 60px;
   overflow: hidden;
 }
@@ -48,15 +49,17 @@ body {
 }
 #menu-toggle.rotate { transform: rotate(180deg); }
 
+/* Updated transition for fast fade-out */
 #sidebar-content {
   opacity: 0;
-  visibility: hidden; /* Changed from display: none */
-  transition: opacity 0.3s ease-in, visibility 0s 0.3s; /* Added visibility transition */
+  visibility: hidden;
+  transition: opacity 0.15s ease-out, visibility 0s 0.15s;
 }
+/* Updated transition for delayed fade-in */
 #sidebar.expanded #sidebar-content {
-  visibility: visible; /* Changed from display: block */
+  visibility: visible;
   opacity: 1;
-  transition: opacity 0.3s ease-in; /* Removed visibility delay */
+  transition: opacity 0.2s ease-in 0.1s;
 }
 
 .tab-buttons {
@@ -177,14 +180,12 @@ p {
   background: #eef3ff;
   transition: transform .3s, background .3s, color .3s;
   overflow: hidden;
-  /* Added to center img tag properly */
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
-/* Added for new Gmail img tag */
 .social-icons a img {
-  width: 1em; /* Scales with the a's font-size */
+  width: 1em;
   height: 1em;
   vertical-align: middle;
 }
@@ -220,7 +221,7 @@ footer {
   width: 100%;
   font-size: .9rem;
   color: #555;
-  text-align: center; /* Added to center text */
+  text-align: center; /* This will now work correctly */
 }
 .mahadev {
   font-weight: 700;
