@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://someshgouda.github.io/sitemap.xml
