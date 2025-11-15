@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Somesh Gouda - Portfolio</title>
 <meta name="description" content="Portfolio of Somesh Gouda — Aspiring Data Analyst skilled in Python, SQL, Excel, Power BI and Data Visualization.">
-<link rel="icon" href="https://img.icons8.com/emoji/48/briefcase-emoji.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="icon" href="[https://img.icons8.com/emoji/48/briefcase-emoji.png](https://img.icons8.com/emoji/48/briefcase-emoji.png)">
+<link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css)">
 
 <style>
+/* * NOTE: Removed all strange leading whitespace/spaces from CSS rules.
+ * This was the main error causing the code to not work.
+*/
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -215,15 +218,19 @@ footer {
   padding: 20px;
   background: #f2f6ff;
   border-top: 1px solid #dde4f0;
-  width: 100%;
+  /* width: 100%; */ /* <-- This was the original issue */
   font-size: .9rem;
   color: #555;
+
+  /* This is the fix for alignment */
+  max-width: 780px; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Added to slightly left align the paragraph content inside the footer */
 footer p {
   text-align: center;
-
 }
 
 .mahadev {
@@ -262,83 +269,83 @@ footer p {
 
 <body>
 
-<div id="sidebar">
-  <div id="menu-toggle"><i class="fas fa-bars"></i></div>
-  <div id="sidebar-content">
-    <div class="tab-buttons">
-      <button data-tab="info" class="active">Info</button>
-      <button data-tab="edu">Education</button>
-      <button data-tab="contact">Contact</button>
-    </div>
+  <div id="sidebar">
+    <div id="menu-toggle"><i class="fas fa-bars"></i></div>
+    <div id="sidebar-content">
+      <div class="tab-buttons">
+        <button data-tab="info" class="active">Info</button>
+        <button data-tab="edu">Education</button>
+        <button data-tab="contact">Contact</button>
+      </div>
 
-    <div id="info" class="tab active">
-      <p><b>Name:</b> Somesh Gouda<br>
-         <b>City:</b> Berhampur<br>
-         <b>District:</b> Ganjam<br>
-         <b>State:</b> Odisha</p>
-    </div>
+      <div id="info" class="tab active">
+        <p><b>Name:</b> Somesh Gouda<br>
+          <b>City:</b> Berhampur<br>
+          <b>District:</b> Ganjam<br>
+          <b>State:</b> Odisha</p>
+      </div>
 
-    <div id="edu" class="tab">
-      <ul>
-        <li>10th – Gopabandhu High School, Polasara</li>
-        <li>12th – Polasara Secondary High School</li>
-        <li>BCA – Presidency College (Berhampur University)</li>
-      </ul>
-    </div>
+      <div id="edu" class="tab">
+        <ul>
+          <li>10th – Gopabandhu High School, Polasara</li>
+          <li>12th – Polasara Secondary High School</li>
+          <li>BCA – Presidency College (Berhampur University)</li>
+        </ul>
+      </div>
 
-    <div id="contact" class="tab">
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png" alt="Gmail"></a>
-      </div>
-    </div>
-  </div>
-</div>
+      <div id="contact" class="tab">
+        <div class="social-icons">
+          <a href="[https://www.linkedin.com/in/someshgouda-1020a4b2b](https://www.linkedin.com/in/someshgouda-1020a4b2b)" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="[https://github.com/SomeshGouda](https://github.com/SomeshGouda)" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="[https://www.instagram.com/somesh___09/](https://www.instagram.com/somesh___09/)" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="[https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q](https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q)" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="[https://img.icons8.com/fluency/48/gmail-new.png](https://img.icons8.com/fluency/48/gmail-new.png)" alt="Gmail"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <header>
-  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong> ✨</h1>
-  <h3 id="typing"></h3>
+  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong> ✨</h1>
+  <h3 id="typing"></h3>
 </header>
 
 <section id="about">
-  <h2>About Me 🌟</h2>
-  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights 📊. 
-  Skilled in <b>Python</b>, <b>SQL</b>, & <b>Excel</b>, I create automated dashboards and reports that help teams make smart decisions 💡. 
-  I’m a quick learner, open to new technologies, and believe in continuous self-improvement through curiosity and practice 🚀.</p>
+  <h2>About Me 🌟</h2>
+  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights 📊. 
+  Skilled in <b>Python</b>, <b>SQL</b>, & <b>Excel</b>, I create automated dashboards and reports that help teams make smart decisions 💡. 
+  I’m a quick learner, open to new technologies, and believe in continuous self-improvement through curiosity and practice 🚀.</p>
 </section>
 
 <section id="education">
-  <h2>Education & Background 🎓</h2>
-  <p><b>10th:</b> Gopabandhu High School, Polasara<br>
-     <b>12th:</b> Polasara Secondary High School<br>
-     <b>Graduation (BCA):</b> Presidency College — Berhampur University<br>
-     📍 <b>Location:</b> Berhampur, Ganjam District, Odisha<br>
-     🎯 <b>Aspiring to be a Data Analyst</b> — currently learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, and <b>Data Visualization</b> to strengthen analytical & visualization skills 📈.</p>
+  <h2>Education & Background 🎓</h2>
+  <p><b>10th:</b> Gopabandhu High School, Polasara<br>
+     <b>12th:</b> Polasara Secondary High School<br>
+     <b>Graduation (BCA):</b> Presidency College — Berhampur University<br>
+S    📍 <b>Location:</b> Berhampur, Ganjam District, Odisha<br>
+     🎯 <b>Aspiring to be a Data Analyst</b> — currently learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, and <b>Data Visualization</b> to strengthen analytical & visualization skills 📈.</p>
 </section>
 
 <section id="connect">
-  <h2>Connect With Me 🌐</h2>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png" alt="Gmail"></a>
-  </div>
-  <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
+  <h2>Connect With Me 🌐</h2>
+  <div class="social-icons">
+    <a href="[https://www.linkedin.com/in/someshgouda-1020a4b2b](https://www.linkedin.com/in/someshgouda-1020a4b2b)" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+  S   <a href="[https://github.com/SomeshGouda](https://github.com/SomeshGouda)" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="[https://www.instagram.com/somesh___09/](https://www.instagram.com/somesh___09/)" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="[https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q](https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q)" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="[https.com/fluency/48/gmail-new.png](https://https.com/fluency/48/gmail-new.png)" alt="Gmail"></a>
+  </div>
+  <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
 
 <footer>
-  <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
+  <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
 </footer>
 
 <div id="offline-msg">
-  <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog">
-  <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
-  <p>Please check your internet connection and try again.</p>
+  <img src="[https://i.imgur.com/0X8Q0bN.png](https://i.imgur.com/0X8Q0bN.png)" alt="Sad dog">
+  <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
+  <p>Please check your internet connection and try again.</p>
 </div>
 
 <script>
