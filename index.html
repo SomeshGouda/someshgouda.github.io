@@ -10,400 +10,344 @@
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg,#d7e8ff,#f4f9ff);
-  color: #222;
-  text-align: center;
-  overflow-x: hidden;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg,#d7e8ff,#f4f9ff);
+  color: #222;
+  text-align: center;
+  overflow-x: hidden;
 }
 
 /* ---------- Sidebar ---------- */
 #sidebar {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  background: transparent;
-  border: none;
-  padding: 10px;
-  z-index: 2000;
-  transition: width 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
-  width: 60px;
-  overflow: hidden;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  z-index: 2000;
+  transition: 0.3s ease;
+  width: 60px;
+  overflow: hidden;
 }
 #sidebar.expanded {
-  width: 260px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.25);
-  padding: 15px;
-  backdrop-filter: blur(8px);
+  width: 260px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
+  padding: 15px;
+  backdrop-filter: blur(8px);
 }
 
 #menu-toggle {
-  cursor: pointer;
-  font-size: 1.6rem;
-  color: #0a58ca;
-  transition: transform 0.4s ease;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #0a58ca;
+  transition: transform 0.4s ease;
 }
 #menu-toggle.rotate { transform: rotate(180deg); }
 
 #sidebar-content {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.15s ease-out, visibility 0s 0.15s;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.15s ease-out;
 }
 #sidebar.expanded #sidebar-content {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.2s ease-in 0.1s;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease-in 0.1s;
 }
 
-.tab-buttons {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
-}
+.tab-buttons { display: flex; gap: 5px; margin-bottom: 10px; }
 .tab-buttons button {
-  flex: 1;
-  border: none;
-  padding: 8px;
-  border-radius: 6px;
-  background: #eef3ff;
-  color: #0a58ca;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  background: #eef3ff;
+  color: #0a58ca;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.tab-buttons button.active {
-  background: #0a58ca;
-  color: #fff;
-}
+.tab-buttons button.active { background: #0a58ca; color: #fff; }
+
 .tab { display: none; }
 .tab.active { display: block; }
+
 #sidebar p, #sidebar ul {
-  font-size: .95rem;
-  color: #333;
-  line-height: 1.5;
-  text-align: left;
+  font-size: .95rem;
+  color: #333;
+  line-height: 1.5;
+  text-align: left;
 }
 #sidebar ul { padding-left: 20px; }
 
 #contact .social-icons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
 }
 #contact .social-icons a {
-  flex: 0 0 calc(33.33% - 10px);
-  text-align: center;
-  font-size: 1.3rem;
-  color: #0a58ca;
-  background: #eef3ff;
-  padding: 10px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
+  flex: 0 0 calc(33.33% - 10px);
+  text-align: center;
+  font-size: 1.3rem;
+  color: #0a58ca;
+  background: #eef3ff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: .3s;
 }
 #contact .social-icons a:hover {
-  transform: scale(1.2);
-  background: #0a58ca;
-  color: #fff;
+  transform: scale(1.2);
+  background: #0a58ca;
+  color: #fff;
 }
 
 /* ---------- Header ---------- */
 header {
-  margin-top: 80px;
-  animation: fadeInDown 1s ease;
+  margin-top: 80px;
+  animation: fadeInDown 1s ease;
 }
 h1 {
-  font-size: 2.6rem;
-  color: #0a58ca;
-  font-weight: 700;
-  text-align: center;
+  font-size: 2.6rem;
+  color: #0a58ca;
+  font-weight: 700;
+  text-align: center;
 }
-h1 span {
-  display: inline-block;
-  animation: wave 2s infinite;
-  transform-origin: 70% 70%;
-}
+h1 span { display: inline-block; animation: wave 2s infinite; transform-origin: 70% 70%; }
+
 @keyframes wave {
-  0%, 60%, 100% { transform: rotate(0); }
-  30% { transform: rotate(10deg); }
-}
-#typing {
-  font-size: 1.2rem;
-  margin-top: 8px;
-  color: #444;
-  min-height: 24px;
+  0%, 60%, 100% { transform: rotate(0); }
+  30% { transform: rotate(10deg); }
 }
 
-/* ---------- Sections ---------- */
+#typing {
+  font-size: 1.2rem;
+  margin-top: 8px;
+  color: #444;
+  min-height: 24px;
+}
+
+/* ---------- SECTIONS FIXED CENTER ---------- */
 section {
-  max-width: 780px;
-  width: 90%;
-  margin: 25px auto;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 25px;
-  animation: fadeIn 1.5s ease;
+  max-width: 780px;
+  width: 90%;
+  margin: 25px auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  animation: fadeIn 1.5s ease;
+  text-align: center;  /* FIXED */
 }
+
 h2 {
-  color: #0a58ca;
-  margin-bottom: 10px;
-  text-align: center;
+  color: #0a58ca;
+  margin-bottom: 10px;
+  text-align: center;
 }
+
+/* PARAGRAPHS FIXED CENTER */
 p {
-  line-height: 1.6;
-  color: #333;
-  text-align: justify;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;  /* FIXED */
 }
 
 /* ---------- Social icons ---------- */
 .social-icons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 .social-icons a {
-  position: relative;
-  font-size: 1.6rem;
-  color: #555;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 50%;
-  background: #eef3ff;
-  transition: transform .3s, background .3s, color .3s;
-  overflow: hidden;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  font-size: 1.6rem;
+  color: #555;
+  padding: 10px;
+  border-radius: 50%;
+  background: #eef3ff;
+  transition: .3s;
 }
-.social-icons a img {
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-}
+.social-icons a img { width: 1em; height: 1em; }
 
-.social-icons a[title="LinkedIn"]:hover { background: #0077b5; color: #fff; }
-.social-icons a[title="GitHub"]:hover { background: #24292e; color: #fff; }
-.social-icons a[title="Instagram"]:hover { background: #e1306c; color: #fff; }
-.social-icons a[title="YouTube"]:hover { background: #ff0000; color: #fff; }
-.social-icons a[title="Gmail"]:hover { background: #d93025; color: #fff; }
 .social-icons a:hover { transform: scale(1.2); }
-
-.ripple {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  background: rgba(255,255,255,.5);
-  border-radius: 50%;
-  transform: translate(-50%,-50%) scale(0);
-  animation: ripple .5s linear;
-}
-@keyframes ripple {
-  to { transform: translate(-50%,-50%) scale(8); opacity: 0; }
-}
 
 /* ---------- Footer ---------- */
 footer {
-  margin-top: 30px;
-  padding: 20px;
-  background: #f2f6ff;
-  border-top: 1px solid #dde4f0;
-  width: 100%;
-  font-size: .9rem;
-  color: #555;
+  margin-top: 30px;
+  padding: 20px;
+  background: #f2f6ff;
+  border-top: 1px solid #dde4f0;
+  width: 100%;
+  font-size: .9rem;
+  color: #555;
 }
-
-/* Added to slightly left align the paragraph content inside the footer */
-footer p {
-  text-align: center;
-
-}
+footer p { text-align: center; }
 
 .mahadev {
-  font-weight: 700;
-  color: #0a58ca;
-  text-align: center;
-  margin-top: 15px;
-  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0a58ca;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
 /* ---------- Offline ---------- */
 #offline-msg {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #fff;
-  z-index: 4000;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #fff;
+  z-index: 4000;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-#offline-msg img { width: 130px; margin-bottom: 20px; }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 
 <body>
 
 <div id="sidebar">
-  <div id="menu-toggle"><i class="fas fa-bars"></i></div>
-  <div id="sidebar-content">
-    <div class="tab-buttons">
-      <button data-tab="info" class="active">Info</button>
-      <button data-tab="edu">Education</button>
-      <button data-tab="contact">Contact</button>
-    </div>
+  <div id="menu-toggle"><i class="fas fa-bars"></i></div>
+  <div id="sidebar-content">
 
-    <div id="info" class="tab active">
-      <p><b>Name:</b> Somesh Gouda<br>
-         <b>City:</b> Berhampur<br>
-         <b>District:</b> Ganjam<br>
-         <b>State:</b> Odisha</p>
-    </div>
+    <div class="tab-buttons">
+      <button data-tab="info" class="active">Info</button>
+      <button data-tab="edu">Education</button>
+      <button data-tab="contact">Contact</button>
+    </div>
 
-    <div id="edu" class="tab">
-      <ul>
-        <li>10th – Gopabandhu High School, Polasara</li>
-        <li>12th – Polasara Secondary High School</li>
-        <li>BCA – Presidency College (Berhampur University)</li>
-      </ul>
-    </div>
+    <div id="info" class="tab active">
+      <p><b>Name:</b> Somesh Gouda<br>
+         <b>City:</b> Berhampur<br>
+         <b>District:</b> Ganjam<br>
+         <b>State:</b> Odisha</p>
+    </div>
 
-    <div id="contact" class="tab">
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png" alt="Gmail"></a>
-      </div>
-    </div>
-  </div>
+    <div id="edu" class="tab">
+      <ul>
+        <li>10th – Gopabandhu High School, Polasara</li>
+        <li>12th – Polasara Secondary High School</li>
+        <li>BCA – Presidency College (Berhampur University)</li>
+      </ul>
+    </div>
+
+    <div id="contact" class="tab">
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png"></a>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <header>
-  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong> ✨</h1>
-  <h3 id="typing"></h3>
+  <h1><span>👋</span> Hi, I'm <strong>Somesh Gouda</strong> ✨</h1>
+  <h3 id="typing"></h3>
 </header>
 
 <section id="about">
-  <h2>About Me 🌟</h2>
-  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights 📊. 
-  Skilled in <b>Python</b>, <b>SQL</b>, & <b>Excel</b>, I create automated dashboards and reports that help teams make smart decisions 💡. 
-  I’m a quick learner, open to new technologies, and believe in continuous self-improvement through curiosity and practice 🚀.</p>
+  <h2>About Me 🌟</h2>
+  <p>I’m <strong>Somesh Gouda</strong>, an enthusiastic professional who enjoys transforming raw data into valuable insights 📊.<br>
+  Skilled in <b>Python</b>, <b>SQL</b>, & <b>Excel</b> for smart decision-making 💡.<br>
+  A quick learner, always exploring new tech and continuous self-improvement 🚀.</p>
 </section>
 
 <section id="education">
-  <h2>Education & Background 🎓</h2>
-  <p><b>10th:</b> Gopabandhu High School, Polasara<br>
-     <b>12th:</b> Polasara Secondary High School<br>
-     <b>Graduation (BCA):</b> Presidency College — Berhampur University<br>
-     📍 <b>Location:</b> Berhampur, Ganjam District, Odisha<br>
-     🎯 <b>Aspiring to be a Data Analyst</b> — currently learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, and <b>Data Visualization</b> to strengthen analytical & visualization skills 📈.</p>
+  <h2>Education & Background 🎓</h2>
+  <p><b>10th:</b> Gopabandhu High School, Polasara<br>
+     <b>12th:</b> Polasara Secondary High School<br>
+     <b>BCA:</b> Presidency College — Berhampur University<br>
+     📍 <b>Location:</b> Berhampur, Odisha<br>
+     🎯 Learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, <b>Data Visualization</b> 📈</p>
 </section>
 
 <section id="connect">
-  <h2>Connect With Me 🌐</h2>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png" alt="Gmail"></a>
-  </div>
-  <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
+  <h2>Connect With Me 🌐</h2>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/someshgouda-1020a4b2b" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/playlist?list=PLRcB2bumlhXlsXpLSXpAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png"></a>
+  </div>
+  <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
 
 <footer>
-  <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
+  <p>© <span id="year"></span> Somesh Gouda | All Rights Reserved</p>
 </footer>
-
-<div id="offline-msg">
-  <img src="https://i.imgur.com/0X8Q0bN.png" alt="Sad dog">
-  <h2>🐶 Oops! Sorry, looks like you're offline.</h2>
-  <p>Please check your internet connection and try again.</p>
-</div>
 
 <script>
 document.getElementById("year").textContent=new Date().getFullYear();
 
-/* Typing Animation */
+/* Typing Effect */
 const typing=document.getElementById('typing');
 const phrases=["Python","SQL","Excel","Visualize Insights"];
 let i=0,j=0,isDel=false,finished=false;
+
 function typeEffect(){
-  if(finished)return;
-  let current=phrases[i];
-  typing.textContent=current.substring(0,j);
-  if(!isDel&&j<current.length){j++;}
-  else if(!isDel&&j===current.length){isDel=true;setTimeout(typeEffect,800);return;}
-  else if(isDel&&j>0){j--;}
-  else if(isDel&&j===0){isDel=false;i++;
-    if(i===phrases.length){
-      finished=true;
-      setTimeout(()=>{typing.textContent="Welcome to my website 😊";},700);
-      return;
-    }}
-  setTimeout(typeEffect,isDel?60:110);
+  if(finished)return;
+  let current=phrases[i];
+  typing.textContent=current.substring(0,j);
+  if(!isDel&&j<current.length) j++;
+  else if(!isDel&&j===current.length){ isDel=true; setTimeout(typeEffect,800); return; }
+  else if(isDel&&j>0) j--;
+  else if(isDel&&j===0){
+    isDel=false; i++;
+    if(i===phrases.length){
+      finished=true;
+      setTimeout(()=>{typing.textContent="Welcome to my website 😊";},700);
+      return;
+    }
+  }
+  setTimeout(typeEffect,isDel?60:110);
 }
 typeEffect();
 
-/* Ripple */
-document.querySelectorAll('.social-icons a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    let r=document.createElement('span');
-    r.className='ripple';
-    a.appendChild(r);
-    setTimeout(()=>r.remove(),400);
-  });
-});
-
-/* Sidebar toggle + outside click close */
+/* Sidebar Toggle */
 const sidebar=document.getElementById('sidebar');
 const menu=document.getElementById('menu-toggle');
+
 menu.onclick=(e)=>{
-  e.stopPropagation();
-  sidebar.classList.toggle('expanded');
-  menu.classList.toggle('rotate');
-};
+  e.stopPropagation();
+  sidebar.classList.toggle('expanded');
+  menu.classList.toggle('rotate');
+}
+
 document.addEventListener('click',e=>{
-  if(!sidebar.contains(e.target)){
-    sidebar.classList.remove('expanded');
-    menu.classList.remove('rotate');
-  }
+  if(!sidebar.contains(e.target)){
+    sidebar.classList.remove('expanded');
+    menu.classList.remove('rotate');
+  }
 });
 
 /* Tabs */
 document.querySelectorAll('.tab-buttons button').forEach(btn=>{
-  btn.onclick=()=>{
-    document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const t=btn.dataset.tab;
-    document.querySelectorAll('#sidebar .tab').forEach(tab=>tab.classList.remove('active'));
-    document.getElementById(t).classList.add('active');
-  };
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-buttons button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const t=btn.dataset.tab;
+    document.querySelectorAll('#sidebar .tab').forEach(tab=>tab.classList.remove('active'));
+    document.getElementById(t).classList.add('active');
+  };
 });
-
-/* Offline */
-window.addEventListener('offline',()=>document.getElementById('offline-msg').style.display='flex');
-window.addEventListener('online',()=>document.getElementById('offline-msg').style.display='none');
 </script>
+
 </body>
-</html> bata issme kya karu jo upar wala thik ho jaye pblm
+</html>
