@@ -55,6 +55,15 @@
   .nav-links a:hover::after{width:100%;}
   .nav-toggle{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
   .nav-toggle span{width:24px; height:2px; background:var(--white);}
+  .nav-social{display:none; gap:16px; margin-top:36px;}
+  .nav-social a{
+    width:40px; height:40px; border-radius:50%;
+    background:rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--white); font-size:16px;
+    transition:background .35s cubic-bezier(.16,1,.3,1), color .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-social a:hover{background:var(--blush); color:var(--black); transform:translateY(-3px);}
 
   /* ============ HERO ============ */
   .hero{
@@ -70,7 +79,7 @@
     font-size:clamp(2.6rem, 7vw, 6.2rem);
     line-height:0.98; letter-spacing:-0.02em;
     opacity:0; transform:translateY(30px);
-    animation:rise .9s ease forwards .2s;
+    animation:rise 1.1s cubic-bezier(.16,1,.3,1) forwards .2s;
     word-break:break-word;
   }
 .hero-right{
@@ -94,7 +103,7 @@
   box-sizing:border-box;
 
   opacity:0;
-  animation:fadeIn 1.2s ease forwards .3s;
+  animation:fadeIn 1.4s cubic-bezier(.16,1,.3,1) forwards .3s;
 }
   @keyframes rise{ to{opacity:1; transform:translateY(0);} }
   @keyframes fadeIn{ to{opacity:1;} }
@@ -122,7 +131,7 @@
     border-radius:18px;
     padding:34px 28px;
     display:flex; align-items:center; gap:16px;
-    transition:transform .3s ease, background .3s ease, box-shadow .3s ease;
+    transition:transform .45s cubic-bezier(.16,1,.3,1), background .45s cubic-bezier(.16,1,.3,1), box-shadow .45s cubic-bezier(.16,1,.3,1);
     cursor:pointer;
   }
   .info-card:hover{transform:translateY(-5px); background:var(--blush); box-shadow:0 14px 30px rgba(14,14,14,.1);}
@@ -134,14 +143,16 @@
   .info-card span.label{font-size:1.05rem; font-weight:500; word-break:break-word;}
 
   /* ============ REVEAL ============ */
-  .reveal{opacity:0; transform:translateY(36px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal{opacity:0; transform:translateY(36px); transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);}
   .reveal.in{opacity:1; transform:translateY(0);}
-  .reveal-stagger > *{opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal-stagger > *{opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);}
   .reveal-stagger.in > *{opacity:1; transform:translateY(0);}
-  .reveal-stagger.in > *:nth-child(1){transition-delay:.05s;}
-  .reveal-stagger.in > *:nth-child(2){transition-delay:.15s;}
-  .reveal-stagger.in > *:nth-child(3){transition-delay:.25s;}
-  .reveal-stagger.in > *:nth-child(4){transition-delay:.35s;}
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.06s;}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:.16s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.26s;}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:.36s;}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.46s;}
+  .reveal-stagger.in > *:nth-child(6){transition-delay:.56s;}
 
   /* ============ SECTION TITLE BAR (black) ============ */
   .title-bar{
@@ -211,19 +222,26 @@
   /* Distinct font for degree / education titles */
   .edu-title{
     font-family:var(--font-edu);
-    font-style:italic;
-    font-weight:700;
-    font-size:1.05rem;
+    font-style:normal;
+    font-weight:800;
+    font-size:1.08rem;
     color:var(--black);
   }
 
   /* Distinct font for project names */
   .project-title{
+    font-family:var(--font-edu);
+    font-style:normal;
+    font-weight:800;
+    font-size:1.08rem;
+    color:var(--black);
+    letter-spacing:0;
+  }
+  .project-num{
     font-family:var(--font-project);
     font-weight:600;
-    font-size:1rem;
+    margin-right:6px;
     color:var(--black);
-    letter-spacing:.01em;
   }
 
 .grid-card{
@@ -232,7 +250,7 @@
   border:none;
   border-radius:20px;
   box-shadow:0 8px 25px rgba(0,0,0,.06);
-  transition:all .35s ease;
+  transition:transform .5s cubic-bezier(.16,1,.3,1), background .5s cubic-bezier(.16,1,.3,1), box-shadow .5s cubic-bezier(.16,1,.3,1);
 }
 
 .grid-card:hover{
@@ -281,14 +299,14 @@
   .grid-card h3{font-family:var(--font-display); font-weight:700; font-size:clamp(1.25rem,3vw,1.5rem); margin-bottom:10px; letter-spacing:-0.01em;}
   .grid-card .sub{font-size:.9rem; color:#5a564f; margin-bottom:14px; font-weight:500;}
   .grid-card p{font-size:.9rem; color:var(--text-soft);}
-  .grid-card .underline{width:48px; height:2px; background:var(--black); margin-bottom:18px; transform-origin:left; transform:scaleX(0); transition:transform .6s ease .2s;}
+  .grid-card .underline{width:48px; height:2px; background:var(--black); margin-bottom:18px; transform-origin:left; transform:scaleX(0); transition:transform .8s cubic-bezier(.16,1,.3,1) .2s;}
   .grid-card.in .underline{transform:scaleX(1);}
 
   /* skills bars inside grid */
   .skill-bar-row{margin-bottom:18px;}
   .skill-bar-row .meta{display:flex; justify-content:space-between; font-size:.85rem; font-weight:600; margin-bottom:6px;}
   .bar{height:6px; border-radius:99px; background:var(--cream); overflow:hidden;}
-  .bar span{display:block; height:100%; width:0%; background:var(--black); border-radius:99px; transition:width 1.3s cubic-bezier(.16,1,.3,1);}
+  .bar span{display:block; height:100%; width:0%; background:var(--black); border-radius:99px; transition:width 1.6s cubic-bezier(.16,1,.3,1);}
 
   /* ============ CONTACT ============ */
   .contact{display:flex; flex-wrap:wrap;}
@@ -313,7 +331,7 @@
   .submit-btn{
     margin-top:10px; padding:15px 36px; border-radius:999px; background:var(--black); color:var(--white);
     font-weight:600; border:none; cursor:pointer; font-size:.95rem;
-    transition:transform .25s ease, box-shadow .25s ease;
+    transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s cubic-bezier(.16,1,.3,1);
   }
   .submit-btn:hover{transform:translateY(-3px); box-shadow:0 12px 26px rgba(14,14,14,.3);}
 
@@ -335,7 +353,7 @@
   justify-content:center;
   color:white;
   font-size:18px;
-  transition:.3s ease;
+  transition:background .4s cubic-bezier(.16,1,.3,1), color .4s cubic-bezier(.16,1,.3,1), transform .4s cubic-bezier(.16,1,.3,1);
   flex-shrink:0;
 }
 
@@ -350,14 +368,15 @@
   @media (max-width: 880px){
     .nav-links{position:fixed; top:0; right:0; height:100vh; width:72%; max-width:300px;
       background:var(--black); flex-direction:column; padding:100px 36px; gap:28px;
-      transform:translateX(100%); transition:transform .4s ease; z-index:50;
+      transform:translateX(100%); transition:transform .55s cubic-bezier(.16,1,.3,1); z-index:50;
       border-left:2px solid var(--white);}
     .nav-links.open{transform:translateX(0);}
+    .nav-social{display:flex;}
     .nav-toggle{display:flex; z-index:70;}
     .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
     .nav-toggle.open span:nth-child(2){opacity:0;}
     .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-    .nav-toggle span{transition:transform .3s ease, opacity .3s ease;}
+    .nav-toggle span{transition:transform .35s cubic-bezier(.16,1,.3,1), opacity .35s ease;}
 
     .hero{flex-direction:column; min-height:auto;}
     .hero-left{border-right:2px solid var(--white); border-bottom:none; padding:48px 7vw; text-align:left;}
@@ -428,6 +447,11 @@
     <a href="#education" onclick="closeMenu()">Education</a>
     <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
+    <div class="nav-social">
+      <a href="https://www.linkedin.com/in/somesh-gouda-1020a432b/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/SomeshGouda" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/somesh___09/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
@@ -446,7 +470,7 @@
 
 <!-- ============ QUICK INFO BOXES ============ -->
 <section class="info-grid reveal-stagger">
-  <a class="info-card" href="tel:+91 91784****6">
+  <a class="info-card" href="#contact">
     <span class="icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </span>
@@ -548,7 +572,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
     <div class="underline"></div>
     <h3>Projects</h3>
 
-    <div class="sub project-title">📊 Retail Sales Analysis</div>
+    <div class="sub project-title"><span class="project-num">1.</span>Retail Sales Analysis</div>
     <ul>
       <li>Analyzed retail sales data using Python, Pandas, NumPy, and Matplotlib.</li>
       <li>Performed data cleaning and handled missing values.</li>
@@ -560,7 +584,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub project-title">⚡ Excel Automation Project</div>
+    <div class="sub project-title"><span class="project-num">2.</span>Excel Automation Project</div>
     <ul>
       <li>Automated data processing and reporting tasks using Excel.</li>
       <li>Created dynamic reports and dashboards.</li>
@@ -572,7 +596,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub project-title">🗄️ SQL Data Warehouse Project</div>
+    <div class="sub project-title"><span class="project-num">3.</span>SQL Data Warehouse Project</div>
     <ul>
       <li>Designed and implemented a data warehouse solution using SQL.</li>
       <li>Created ETL workflows and analytical data models.</li>
@@ -584,7 +608,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub project-title">🌐 Online Library Management System</div>
+    <div class="sub project-title"><span class="project-num">4.</span>Online Library Management System</div>
     <ul>
       <li>Developed a web-based library management system as a final-year project.</li>
       <li>Implemented book issue, return, and user management features.</li>
@@ -662,6 +686,24 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
     <div class="underline"></div>
     <h3>Problem Solving</h3>
     <p>Analytical Thinking & Debugging Skills</p>
+  </div>
+
+  <div class="grid-card">
+    <div class="underline"></div>
+    <h3>Canva</h3>
+    <p>Graphic Design</p>
+  </div>
+
+  <div class="grid-card">
+    <div class="underline"></div>
+    <h3>CapCut</h3>
+    <p>Video Editing</p>
+  </div>
+
+  <div class="grid-card">
+    <div class="underline"></div>
+    <h3>Adobe Express</h3>
+    <p>Photo & Template Editing</p>
   </div>
 </section>
 
