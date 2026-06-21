@@ -15,7 +15,9 @@
   "url": "https://someshgouda.github.io",
   "sameAs": [
     "https://www.linkedin.com/in/somesh-gouda-1020a432b",
-    "https://github.com/SomeshGouda"
+    "https://github.com/SomeshGouda",
+    "https://www.instagram.com/somesh___09/",
+    "https://www.youtube.com/playlist?list=PLRcB2bumlhXlsXpLSgAgP47S75s9EeJ3q"
   ]
 }
   </script>
@@ -30,10 +32,11 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(135deg,#d7e8ff,#f4f9ff);
+  background: linear-gradient(135deg,#e6f0fa,#fdfeff);
   color: #222;
   text-align: center;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 /* ---------- Sidebar ---------- */
@@ -51,18 +54,19 @@ body {
 }
 #sidebar.expanded {
   width: 260px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 10px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(10, 88, 202, 0.15);
   padding: 15px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(10, 88, 202, 0.1);
 }
 
 #menu-toggle {
   cursor: pointer;
   font-size: 1.6rem;
   color: #0a58ca;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 #menu-toggle.rotate { transform: rotate(180deg); }
 
@@ -87,9 +91,9 @@ body {
   color: #0a58ca;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s ease;
 }
-.tab-buttons button.active { background: #0a58ca; color: #fff; }
+.tab-buttons button.active { background: #0a58ca; color: #fff; box-shadow: 0 4px 10px rgba(10,88,202,0.2); }
 
 .tab { display: none; }
 .tab.active { display: block; }
@@ -102,13 +106,13 @@ body {
 }
 #sidebar ul { padding-left: 20px; }
 
-#contact .social-icons {
+#sidebar .social-icons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: flex-start;
 }
-#contact .social-icons a {
+#sidebar .social-icons a {
   flex: 0 0 calc(33.33% - 10px);
   text-align: center;
   font-size: 1.3rem;
@@ -116,10 +120,10 @@ body {
   background: #eef3ff;
   padding: 10px;
   border-radius: 50%;
-  transition: .3s;
+  transition: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-#contact .social-icons a:hover {
-  transform: scale(1.2);
+#sidebar .social-icons a:hover {
+  transform: scale(1.15) translateY(-3px);
   background: #0a58ca;
   color: #fff;
 }
@@ -127,78 +131,134 @@ body {
 /* ---------- Header ---------- */
 header {
   margin-top: 80px;
-  animation: fadeInDown 1s ease;
+  animation: fadeInDown 1s cubic-bezier(0.1,-0.6, 0.2, 1.4);
 }
 h1 {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   color: #0a58ca;
   font-weight: 700;
   text-align: center;
 }
-h1 span { display: inline-block; animation: wave 2s infinite; transform-origin: 70% 70%; }
+h1 span { display: inline-block; animation: wave 2.5s infinite; transform-origin: 70% 70%; }
 
 @keyframes wave {
   0%, 60%, 100% { transform: rotate(0); }
-  30% { transform: rotate(10deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
 }
 
 #typing {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-top: 8px;
   color: #444;
   min-height: 24px;
+  font-weight: 500;
 }
 
-/* ---------- SECTIONS FIXED CENTER ---------- */
+/* ---------- SECTIONS FIXED CENTER WITH WAVE/HOVER EFFECT ---------- */
 section {
   max-width: 780px;
   width: 90%;
-  margin: 25px auto;
+  margin: 30px auto;
   background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 25px;
-  animation: fadeIn 1.5s ease;
-  text-align: center;  /* FIXED */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  padding: 30px;
+  animation: fadeIn 1.2s ease;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  border: 1px solid rgba(10, 88, 202, 0.03);
+}
+
+section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(10, 88, 202, 0.1);
 }
 
 h2 {
   color: #0a58ca;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(90deg, #0a58ca, transparent);
+  bottom: -5px;
+  left: 25%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+section:hover h2::after {
+  width: 100%;
+  left: 0;
+}
+
+p {
+  line-height: 1.7;
+  color: #444;
   text-align: center;
 }
 
-/* PARAGRAPHS FIXED CENTER */
-p {
-  line-height: 1.6;
-  color: #333;
-  text-align: center;  /* FIXED */
-}
-
-/* ---------- Social icons ---------- */
-.social-icons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
+/* ---------- Enhanced Direct Links Grid ---------- */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 15px;
+  margin-top: 25px;
 }
-.social-icons a {
-  position: relative;
-  font-size: 1.6rem;
-  color: #555;
-  padding: 10px;
-  border-radius: 50%;
-  background: #eef3ff;
-  transition: .3s;
-}
-.social-icons a img { width: 1em; height: 1em; }
 
-.social-icons a:hover { transform: scale(1.2); }
+.link-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 10px;
+  background: #f8faff;
+  border: 1px solid #eef3ff;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.link-card i, .link-card img {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.link-card img { width: 2rem; height: 2rem; }
+
+/* Individual Platform Brand Colors on Hover */
+.link-card.linkedin:hover { background: #0077b5; color: #fff; }
+.link-card.github:hover { background: #24292e; color: #fff; }
+.link-card.instagram:hover { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+.link-card.youtube:hover { background: #ff0000; color: #fff; }
+.link-card.gmail:hover { background: #ea4335; color: #fff; }
+
+.link-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.link-card:hover i {
+  transform: scale(1.1);
+}
 
 /* ---------- Footer ---------- */
 footer {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 50px;
+  padding: 25px;
   background: #f2f6ff;
   border-top: 1px solid #dde4f0;
   width: 100%;
@@ -211,26 +271,19 @@ footer p { text-align: center; }
   font-weight: 700;
   color: #0a58ca;
   margin-top: 15px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-align: center;
+  letter-spacing: 1px;
+  animation: pulse 2s infinite ease-in-out;
 }
 
-/* ---------- Offline ---------- */
-#offline-msg {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #fff;
-  z-index: 4000;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
 }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 
@@ -243,7 +296,7 @@ footer p { text-align: center; }
     <div class="tab-buttons">
       <button data-tab="info" class="active">Info</button>
       <button data-tab="edu">Education</button>
-      <button data-tab="contact">Contact</button>
+      <button data-tab="contact">Links</button>
     </div>
 
     <div id="info" class="tab active">
@@ -255,9 +308,9 @@ footer p { text-align: center; }
 
     <div id="edu" class="tab">
       <ul>
-        <li>10th – Gopabandhu High School, Polasara</li>
-        <li>12th – Polasara Secondary High School</li>
-        <li>BCA – Presidency College (Berhampur University)</li>
+        <li>10th – Gopabandhu High School</li>
+        <li>12th – Polasara Secondary School</li>
+        <li>BCA – Presidency College</li>
       </ul>
     </div>
 
@@ -267,7 +320,6 @@ footer p { text-align: center; }
         <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://www.youtube.com/playlist?list=PLRcB2bumlhXlsXpLSgAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png"></a>
       </div>
     </div>
 
@@ -295,15 +347,38 @@ footer p { text-align: center; }
      🎯 Learning <b>Power BI</b>, <b>SQL</b>, <b>Python</b>, <b>Excel</b>, <b>Data Visualization</b> 📈</p>
 </section>
 
+<!-- ENHANCED DIRECT LINKS REDIRECT SECTION -->
 <section id="connect">
   <h2>Connect With Me 🌐</h2>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/somesh-gouda-1020a432b/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/SomeshGouda" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/somesh___09/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com/playlist?list=PLRcB2bumlhXlsXpLSgAgP47S75s9EeJ3q" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="mailto:cx27somesh@gmail.com" target="_blank" title="Gmail"><img src="https://img.icons8.com/fluency/48/gmail-new.png"></a>
+  <p>Click on any platform to directly check my official profiles</p>
+  
+  <div class="links-grid">
+    <a href="https://www.linkedin.com/in/somesh-gouda-1020a432b/" target="_blank" class="link-card linkedin">
+      <i class="fab fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+    
+    <a href="https://github.com/SomeshGouda" target="_blank" class="link-card github">
+      <i class="fab fa-github"></i>
+      <span>GitHub</span>
+    </a>
+    
+    <a href="https://www.instagram.com/somesh___09/" target="_blank" class="link-card instagram">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+    
+    <a href="https://www.youtube.com/playlist?list=PLRcB2bumlhXlsXpLSgAgP47S75s9EeJ3q" target="_blank" class="link-card youtube">
+      <i class="fab fa-youtube"></i>
+      <span>YouTube</span>
+    </a>
+    
+    <a href="mailto:cx27somesh@gmail.com" class="link-card gmail">
+      <img src="https://img.icons8.com/fluency/48/gmail-new.png" alt="Gmail">
+      <span>Email Me</span>
+    </a>
   </div>
+
   <p class="mahadev">🔱 Har Har Mahadev 🔱</p>
 </section>
 
