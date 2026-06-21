@@ -71,14 +71,25 @@
     animation:rise .9s ease forwards .2s;
     word-break:break-word;
   }
-  .hero-right{
+.hero-right{
   flex:1;
   position:relative;
   overflow:hidden;
-  min-height:280px;
+  min-height:80vh;
 
-  background:url('profile.jpg') center center/cover no-repeat;
-  background-position:center 35%;
+  background-color:#000;
+  background-image:url('profile.jpg');
+  background-repeat:no-repeat;
+
+  /* Image ko panel ke andar fit karega */
+  background-size:contain;
+
+  /* Bilkul center me rakhega */
+  background-position:center center;
+
+  /* White border */
+  border:4px solid #fff;
+  box-sizing:border-box;
 
   opacity:0;
   animation:fadeIn 1.2s ease forwards .3s;
