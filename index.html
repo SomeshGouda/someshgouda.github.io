@@ -8,6 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
   :root{
@@ -217,8 +218,25 @@
   .footer-links{display:flex; flex-direction:column; gap:8px; font-size:.9rem; color:#cfc8be;}
   .footer-links a:hover{color:var(--white);}
   .social{display:flex; gap:14px; align-self:flex-end;}
-  .social a{width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; font-size:.85rem; font-weight:700; transition:.3s ease; flex-shrink:0;}
-  .social a:hover{background:var(--blush); color:var(--black);}
+.social a{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:18px;
+  transition:.3s ease;
+  flex-shrink:0;
+}
+
+.social a:hover{
+  background:var(--blush);
+  color:var(--black);
+  transform:translateY(-3px);
+}
   .copyright{padding-top:22px; font-size:.78rem; color:#9a948a;}
 
   /* ============ RESPONSIVE ============ */
@@ -372,13 +390,13 @@ my skills and grow in the field of data analytics.
         <li>Prepared and documented analytical findings and presented project results through reports and dashboards.</li>
       </ul>
     </div>
-    </div>
+    
     <div class="job-card">
       <h3>Freelance</h3>
       <div class="org">Self-Employed / Independent</div>
       <ul>
         <li>SEO Job In Berhampur </li>
-        <li>Use Canva And Adobe Express For Video Editing And Graphic Designing.</li>/li>
+        <li>Use Canva And Adobe Express For Video Editing And Graphic Designing.</li>
         <li>Assisted in configuring and maintaining Windows and Linux systems.</li>
       </ul>
     </div>
@@ -420,36 +438,45 @@ Performed data cleaning, removed duplicates and missing values, created Total_Sa
 </section>
 
 <!-- ============ SKILLS ============ -->
-<div class="title-bar reveal" id="skills"><h2>Skills</h2></div>
+<div class="title-bar reveal" id="skills">
+  <h2>Skills</h2>
+</div>
+
 <section class="grid2 reveal-stagger">
   <div class="grid-card">
     <div class="underline"></div>
-    <h3>Skill One</h3>
-    <div class="skill-bar-row">
-      <div class="meta"><span>Proficiency</span><span>85%</span></div>
-      <div class="bar"><span data-width="85"></span></div>
-    </div>
+    <h3>Python</h3>
+    <p>Data Analysis, Automation, Data Cleaning</p>
   </div>
+
   <div class="grid-card">
     <div class="underline"></div>
-    <h3>Skill Two</h3>
-    <div class="skill-bar-row">
-      <div class="meta"><span>Proficiency</span><span>75%</span></div>
-      <div class="bar"><span data-width="75"></span></div>
-    </div>
+    <h3>SQL</h3>
+    <p>Queries, Joins, Window Functions, Database Analysis</p>
   </div>
+
   <div class="grid-card">
     <div class="underline"></div>
-    <h3>Skill Three</h3>
-    <div class="skill-bar-row">
-      <div class="meta"><span>Proficiency</span><span>70%</span></div>
-      <div class="bar"><span data-width="70"></span></div>
-    </div>
+    <h3>Excel</h3>
+    <p>Pivot Tables, Charts, Data Cleaning, Reporting</p>
   </div>
+
   <div class="grid-card">
     <div class="underline"></div>
-    <h3>Problem-Solving</h3>
-    <p>A soft skill — describe how you approach challenges, debugging, or unfamiliar problems.</p>
+    <h3>Power BI</h3>
+    <p>Dashboards, Data Visualization, KPI Reports</p>
+  </div>
+
+  <div class="grid-card">
+    <div class="underline"></div>
+    <h3>Pandas & NumPy</h3>
+    <p>Data Manipulation, EDA, Statistical Analysis</p>
+  </div>
+
+  <div class="grid-card">
+    <div class="underline"></div>
+    <h3>Problem Solving</h3>
+    <p>Analytical Thinking & Debugging Skills</p>
   </div>
 </section>
 
@@ -509,19 +536,35 @@ Performed data cleaning, removed duplicates and missing values, created Total_Sa
   <h2>Somesh Gouda</h2>
   <div class="footer-grid">
     <div class="footer-info">
-      <a href="tel:+1234567890" style="display:block;">123-456-7890</a>
-      <a href="mailto:youremail@example.com" style="display:block;">youremail@example.com</a>
-      Your Address, City, State ZIP
-    </div>
+  <a href="tel:+9191784XXXXX" style="display:block;">+91 91784 XXXXX</a>
+  <a href="mailto:someshgouda66@gmail.com" style="display:block;">someshgouda66@gmail.com</a>
+  Berhampur, Odisha, India
+</div>
     <div class="footer-links">
       <a href="#">Privacy Policy</a>
       <a href="#">Accessibility Statement</a>
     </div>
-    <div class="social">
-      <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
-      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
-    </div>
+   <div class="social">
+    <a href="https://www.linkedin.com/in/somesh-gouda-1020a432b/" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="https://github.com/SomeshGouda" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://www.instagram.com/somesh___09/" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://www.youtube.com/" target="_blank">
+        <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://twitter.com/" target="_blank">
+        <i class="fab fa-x-twitter"></i>
+    </a>
+</div>
   </div>
   <div class="copyright">© <span id="year"></span> by Somesh Gouda. Built with care.</div>
 </footer>
