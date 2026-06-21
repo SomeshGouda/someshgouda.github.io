@@ -22,13 +22,14 @@
     --font-body:'Inter', sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
   body{
     background:var(--cream);
     color:var(--black);
     font-family:var(--font-body);
     line-height:1.6;
     overflow-x:hidden;
+    width:100%;
   }
   a{color:inherit; text-decoration:none;}
   img{max-width:100%; display:block;}
@@ -90,18 +91,21 @@
 
   /* ============ QUICK INFO BOXES ============ */
   .info-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+    display:grid; grid-template-columns:1fr 1fr; gap:30px;
     background:var(--cream);
-    padding:0 6vw clamp(40px,7vw,60px);
+    padding:clamp(40px,6vw,60px) 6vw clamp(50px,8vw,70px);
+    max-width:1500px;
+    margin:0 auto;
   }
   .info-card{
     background:var(--blush-soft);
     border-radius:18px;
     padding:34px 28px;
     display:flex; align-items:center; gap:16px;
-    transition:transform .3s ease, background .3s ease;
+    transition:transform .3s ease, background .3s ease, box-shadow .3s ease;
+    cursor:pointer;
   }
-  .info-card:hover{transform:translateY(-5px); background:var(--blush);}
+  .info-card:hover{transform:translateY(-5px); background:var(--blush); box-shadow:0 14px 30px rgba(14,14,14,.1);}
   .info-card .icon{
     width:26px; height:26px; flex-shrink:0;
     display:flex; align-items:center; justify-content:center;
@@ -315,30 +319,30 @@
 
 <!-- ============ QUICK INFO BOXES ============ -->
 <section class="info-grid reveal-stagger">
-  <div class="info-card">
+  <a class="info-card" href="tel:+1234567890">
     <span class="icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </span>
     <span class="label">123-456-7890</span>
-  </div>
-  <div class="info-card">
+  </a>
+  <a class="info-card" href="mailto:youremail@example.com">
     <span class="icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg>
     </span>
     <span class="label">youremail@example.com</span>
-  </div>
-  <div class="info-card">
+  </a>
+  <a class="info-card" href="https://www.google.com/maps/search/?api=1&query=Your+City+Country" target="_blank" rel="noopener">
     <span class="icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     </span>
     <span class="label">Your City, Country</span>
-  </div>
-  <div class="info-card">
+  </a>
+  <a class="info-card" href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
     <span class="icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </span>
     <span class="label">linkedin.com/in/yourname</span>
-  </div>
+  </a>
 </section>
 
 <!-- ============ SUMMARY ============ -->
@@ -500,8 +504,8 @@
   <h2>Your Name</h2>
   <div class="footer-grid">
     <div class="footer-info">
-      123-456-7890<br>
-      youremail@example.com<br>
+      <a href="tel:+1234567890" style="display:block;">123-456-7890</a>
+      <a href="mailto:youremail@example.com" style="display:block;">youremail@example.com</a>
       Your Address, City, State ZIP
     </div>
     <div class="footer-links">
@@ -509,9 +513,9 @@
       <a href="#">Accessibility Statement</a>
     </div>
     <div class="social">
-      <a href="#" aria-label="LinkedIn">in</a>
-      <a href="#" aria-label="GitHub">gh</a>
-      <a href="#" aria-label="Instagram">ig</a>
+      <a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      <a href="https://github.com/yourusername" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+      <a href="https://instagram.com/yourusername" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
     </div>
   </div>
   <div class="copyright">© <span id="year"></span> by Your Name. Built with care.</div>
