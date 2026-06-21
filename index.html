@@ -188,15 +188,16 @@
 
   /* ============ 2x2 GRID (Education / Skills / Achievements) ============ */
   .grid2{
-    display:grid; grid-template-columns:1fr 1fr; gap:0;
-    background:var(--cream);
-  }
-  .grid-card{
-    background:var(--blush-soft);
-    padding:clamp(32px,6vw,50px) 4vw;
-    border:1px solid var(--cream);
-    transition:transform .35s ease, background .35s ease;
-  }
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+  background:var(--cream);
+}
+
+.grid-card{
+  border:none;
+  border-bottom:1px solid rgba(0,0,0,.1);
+}
   .grid-card:hover{transform:translateY(-6px); background:var(--blush);}
   .grid-card h3{font-family:var(--font-display); font-weight:700; font-size:clamp(1.25rem,3vw,1.5rem); margin-bottom:10px; letter-spacing:-0.01em;}
   .grid-card .sub{font-size:.9rem; color:#5a564f; margin-bottom:14px; font-weight:500;}
