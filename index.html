@@ -1,137 +1,108 @@
-from pathlib import Path
-
-html = r"""<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Somesh Gouda | Portfolio</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#f7f7f7;color:#111}
-nav{position:fixed;top:0;width:100%;background:#fff;display:flex;justify-content:space-between;padding:20px 8%;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1000}
-nav a{text-decoration:none;color:#111;margin-left:20px}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:0 8%}
-.hero h1{font-size:70px}
-.hero p{font-size:22px;color:#555}
-.btn{display:inline-block;margin-top:20px;padding:14px 28px;background:#111;color:#fff;text-decoration:none;border-radius:30px}
-.photo{width:350px;height:350px;border-radius:50%;background:#ddd;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:cover}
-section{padding:100px 8%}
-.card{background:#fff;padding:25px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
-.skills,.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.bar{height:10px;background:#ddd;border-radius:20px;overflow:hidden;margin-top:10px}
-.fill{height:100%;background:#111}
-.project{transition:.3s}
-.project:hover{transform:translateY(-8px)}
-.timeline{border-left:3px solid #111;padding-left:20px}
-.item{margin-bottom:30px}
-footer{text-align:center;padding:40px;background:#111;color:#fff}
-.reveal{opacity:0;transform:translateY(40px);transition:1s}
-.reveal.active{opacity:1;transform:none}
-@media(max-width:900px){
-.hero{flex-direction:column-reverse;text-align:center;padding-top:120px}
-.hero h1{font-size:48px}
-.photo{width:250px;height:250px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional CV / Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-<h3>Somesh Gouda</h3>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Left Sidebar / Header Profile -->
+        <header class="sidebar">
+            <div class="profile-section">
+                <!-- Replace with your image link -->
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img">
+                <h1 class="name">Somesh</h1>
+                <p class="title">Data Analyst / Graduate</p>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#about" class="active">About Me</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
-<section class="hero">
-<div>
-<h1>SOMESH GOUDA</h1>
-<p id="typing"></p>
-<a class="btn" href="#">Download Resume</a>
-</div>
-<div class="photo">
-<img src="profile.jpg" alt="Profile">
-</div>
-</section>
+            <div class="sidebar-footer">
+                <p>© 2026 by Somesh.</p>
+            </div>
+        </header>
 
-<section id="about" class="reveal">
-<h2>About Me</h2><br>
-<div class="card">
-<p>BCA Graduate and aspiring Data Analyst skilled in Python, SQL, Excel, Power BI and Data Visualization. Passionate about turning raw data into actionable insights.</p>
-</div>
-</section>
+        <!-- Right Main Content Area -->
+        <main class="main-content">
+            
+            <!-- About Section -->
+            <section id="about" class="content-section">
+                <h2>About Me</h2>
+                <div class="line"></div>
+                <p class="about-text">
+                    Hello! I am a final-year student specializing in data analytics and technology. I enjoy solving complex problems, working with databases, and transforming raw data into meaningful insights. I am highly motivated to kickstart my professional journey and contribute effectively to team success.
+                </p>
+            </section>
 
-<section id="skills" class="reveal">
-<h2>Skills</h2><br>
-<div class="skills">
-<div class="card">Python<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-<div class="card">SQL<div class="bar"><div class="fill" style="width:90%"></div></div></div>
-<div class="card">Excel<div class="bar"><div class="fill" style="width:85%"></div></div></div>
-<div class="card">Power BI<div class="bar"><div class="fill" style="width:75%"></div></div></div>
-</div>
-</section>
+            <!-- Education Section -->
+            <section id="education" class="content-section">
+                <h2>Education</h2>
+                <div class="line"></div>
+                
+                <div class="timeline-item">
+                    <span class="date">2023 - 2026</span>
+                    <div class="details">
+                        <h3>Bachelor of Computer Applications (BCA)</h3>
+                        <p class="institution">University / College Name</p>
+                        <p>Focused on software development, database management systems, and analytical methodologies.</p>
+                    </div>
+                </div>
 
-<section id="projects" class="reveal">
-<h2>Projects</h2><br>
-<div class="projects">
-<div class="card project"><h3>Retail Sales Analysis</h3><p>Analyzed sales trends using Python, Pandas and Matplotlib.</p></div>
-<div class="card project"><h3>HR Analytics Dashboard</h3><p>Interactive dashboard for workforce insights.</p></div>
-<div class="card project"><h3>Netflix Data Analysis</h3><p>Exploratory data analysis and visualizations.</p></div>
-</div>
-</section>
+                <div class="timeline-item">
+                    <span class="date">2021 - 2023</span>
+                    <div class="details">
+                        <h3>Higher Secondary Education</h3>
+                        <p class="institution">School Name</p>
+                        <p>Completed with a strong foundation in mathematics and computer science.</p>
+                    </div>
+                </div>
+            </section>
 
-<section class="reveal">
-<h2>Education</h2><br>
-<div class="card timeline">
-<div class="item"><h3>BCA</h3><p>Presidency College, Berhampur University</p></div>
-<div class="item"><h3>12th</h3><p>Polasara Secondary High School</p></div>
-<div class="item"><h3>10th</h3><p>Gopabandhu High School</p></div>
-</div>
-</section>
+            <!-- Skills Section -->
+            <section id="skills" class="content-section">
+                <h2>Technical Skills</h2>
+                <div class="line"></div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>Databases</h3>
+                        <p>SQL, MySQL</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Programming & Analytics</h3>
+                        <p>Python, Pandas</p>
+                    </div>
+                    <div class="skill-card">
+                        <h3>Tools & Visualization</h3>
+                        <p>Excel, Power BI</p>
+                    </div>
+                </div>
+            </section>
 
-<section id="contact" class="reveal">
-<h2>Contact</h2><br>
-<div class="card">
-<p>Email: yourmail@gmail.com</p><br>
-<p>
-<i class="fab fa-linkedin"></i> LinkedIn |
-<i class="fab fa-github"></i> GitHub |
-<i class="fab fa-instagram"></i> Instagram
-</p>
-</div>
-</section>
+            <!-- Contact Section -->
+            <section id="contact" class="content-section">
+                <h2>Contact</h2>
+                <div class="line"></div>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> your.email@example.com</p>
+                    <p><strong>Phone:</strong> +91 XXXXXXXXXX</p>
+                    <p><strong>Location:</strong> India</p>
+                </div>
+            </section>
 
-<footer>© 2026 Somesh Gouda</footer>
+        </main>
+    </div>
 
-<script>
-const words=["Aspiring Data Analyst","Python Developer","SQL Enthusiast","Power BI Learner"];
-let i=0,j=0,del=false;
-function type(){
-let el=document.getElementById("typing");
-let w=words[i];
-el.textContent=w.substring(0,j);
-if(!del && j<w.length){j++;}
-else if(!del){del=true;setTimeout(type,1000);return;}
-else if(del && j>0){j--;}
-else{del=false;i=(i+1)%words.length;}
-setTimeout(type,del?50:100);
-}
-type();
-
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("active")})
-});
-document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
-</script>
 </body>
-</html>"""
-
-path = "/mnt/data/index.html"
-Path(path).write_text(html, encoding="utf-8")
-print(path)
+</html>
