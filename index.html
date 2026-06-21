@@ -168,7 +168,17 @@
   /* ============ TWO-COL IMAGE + CARD GRID (Experience) ============ */
   .split{display:flex; flex-wrap:wrap;}
   .split-cards{flex:1; min-width:300px; background:var(--blush-soft); padding:clamp(36px,6vw,50px) 5vw;}
-  .split-photo{flex:1; min-width:300px; min-height:280px; background:var(--black) url('https://placehold.co/900x1200/0E0E0E/E3C8BB?text=Workspace') center/cover; border:2px solid var(--white); border-left:none;}
+  .split-photo{
+  flex:1;
+  min-width:300px;
+  min-height:280px;
+
+  background:url('workspace.jpg') center center no-repeat;
+  background-size:cover;
+
+  border:2px solid var(--white);
+  border-left:none;
+}
   .job-card{padding:clamp(24px,4vw,34px) 0; border-bottom:1px solid rgba(14,14,14,.12);}
   .job-card:last-child{border-bottom:none;}
   .job-card h3{font-family:var(--font-display); font-weight:700; font-size:clamp(1.2rem,2.6vw,1.4rem); margin-bottom:4px;}
