@@ -72,11 +72,17 @@
     word-break:break-word;
   }
   .hero-right{
-    flex:1; position:relative; overflow:hidden;
-    min-height:280px;
-    background:var(--blush) url('https://placehold.co/900x1100/E3C8BB/0E0E0E?text=Your+Photo') center/cover;
-    opacity:0; animation:fadeIn 1.2s ease forwards .3s;
-  }
+  flex:1;
+  position:relative;
+  overflow:hidden;
+  min-height:280px;
+
+  background:url('profile.jpg') center top/cover no-repeat;
+  background-position:center 15%;
+
+  opacity:0;
+  animation:fadeIn 1.2s ease forwards .3s;
+}
   @keyframes rise{ to{opacity:1; transform:translateY(0);} }
   @keyframes fadeIn{ to{opacity:1;} }
 
