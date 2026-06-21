@@ -7,7 +7,7 @@
 <meta name="description" content="Personal CV and portfolio website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Poppins:ital,wght@0,500;0,600;1,500;1,600&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
@@ -21,6 +21,8 @@
 
     --font-display:'Archivo', sans-serif;
     --font-body:'Inter', sans-serif;
+    --font-edu:'Playfair Display', serif;
+    --font-project:'Poppins', sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
@@ -197,6 +199,33 @@
   padding:40px 0;
 }
 
+  /* Skills get their own 3-per-row layout */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+    background:var(--cream);
+    padding:40px 0;
+  }
+
+  /* Distinct font for degree / education titles */
+  .edu-title{
+    font-family:var(--font-edu);
+    font-style:italic;
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--black);
+  }
+
+  /* Distinct font for project names */
+  .project-title{
+    font-family:var(--font-project);
+    font-weight:600;
+    font-size:1rem;
+    color:var(--black);
+    letter-spacing:.01em;
+  }
+
 .grid-card{
   background:var(--blush-soft);
   padding:40px 45px;
@@ -336,6 +365,7 @@
     .split{flex-direction:column;}
     .split-photo{min-height:240px; order:-1; border-left:2px solid var(--white); border-bottom:none;}
     .grid2{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:repeat(2, 1fr);}
     .info-grid{grid-template-columns:1fr;}
     .contact{flex-direction:column;}
     .contact-left{border-right:2px solid var(--white); border-bottom:none;}
@@ -365,6 +395,7 @@
     .job-card h3{font-size:1.1rem;}
     .grid-card{padding-top:30px; padding-bottom:30px;}
     .grid-card h3{font-size:1.15rem;}
+    .skills-grid{grid-template-columns:1fr;}
     .contact-left{padding-top:40px; padding-bottom:40px;}
     .contact-left h2{font-size:1.8rem;}
     .contact-right{padding-top:40px; padding-bottom:40px;}
@@ -493,39 +524,23 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
     <div class="underline"></div>
     <h3>Education</h3>
 
-    <div class="sub">🎓 Bachelor of Computer Applications (BCA)</div>
+    <div class="sub edu-title">🎓 Bachelor of Computer Applications (BCA)</div>
     <p>
       Presidency College, Berhampur University |
       2023 – 2026 | Percentage: 85%
     </p>
 
-    <div class="sub">📚 Higher Secondary Education (+2)</div>
+    <div class="sub edu-title">📚 Higher Secondary Education (+2)</div>
     <p>
       Polasara Science College, Polasara |
       2021 – 2023 | Percentage: 64%
     </p>
 
-    <div class="sub">🏫 Secondary Education (10th)</div>
+    <div class="sub edu-title">🏫 Secondary Education (10th)</div>
     <p>
       Gopabandhu High School, Polasara |
       2020 – 2021 | Percentage: 79%
     </p>
-  </div>
-
-  <!-- INTERNSHIP -->
-  <div class="grid-card">
-    <div class="underline"></div>
-    <h3>Internships</h3>
-
-    <div class="sub">💼 Data Analyst Intern | Internship Studio</div>
-
-    <ul>
-      <li>Collected, cleaned, and analyzed datasets using Python, Pandas, and Excel.</li>
-      <li>Performed data preprocessing by handling missing values, duplicates, and inconsistencies.</li>
-      <li>Conducted Exploratory Data Analysis (EDA) to identify trends and patterns.</li>
-      <li>Created visualizations and reports using Matplotlib and Excel.</li>
-      <li>Presented analytical findings through dashboards and project reports.</li>
-    </ul>
   </div>
 
   <!-- PROJECTS -->
@@ -533,7 +548,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
     <div class="underline"></div>
     <h3>Projects</h3>
 
-    <div class="sub">📊 Retail Sales Analysis</div>
+    <div class="sub project-title">📊 Retail Sales Analysis</div>
     <ul>
       <li>Analyzed retail sales data using Python, Pandas, NumPy, and Matplotlib.</li>
       <li>Performed data cleaning and handled missing values.</li>
@@ -545,7 +560,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub">⚡ Excel Automation Project</div>
+    <div class="sub project-title">⚡ Excel Automation Project</div>
     <ul>
       <li>Automated data processing and reporting tasks using Excel.</li>
       <li>Created dynamic reports and dashboards.</li>
@@ -557,7 +572,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub">🗄️ SQL Data Warehouse Project</div>
+    <div class="sub project-title">🗄️ SQL Data Warehouse Project</div>
     <ul>
       <li>Designed and implemented a data warehouse solution using SQL.</li>
       <li>Created ETL workflows and analytical data models.</li>
@@ -569,7 +584,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
       </li>
     </ul>
 
-    <div class="sub">🌐 Online Library Management System</div>
+    <div class="sub project-title">🌐 Online Library Management System</div>
     <ul>
       <li>Developed a web-based library management system as a final-year project.</li>
       <li>Implemented book issue, return, and user management features.</li>
@@ -612,7 +627,7 @@ Aspiring Data Analyst passionate about turning data into meaningful insights. Eq
   <h2>Skills</h2>
 </div>
 
-<section class="grid2 reveal-stagger">
+<section class="skills-grid reveal-stagger">
   <div class="grid-card">
     <div class="underline"></div>
     <h3>Python</h3>
