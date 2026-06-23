@@ -50,6 +50,15 @@
     mix-blend-mode:multiply;
   }
 
+  /* ============ SCROLL PROGRESS BAR ============ */
+  .scroll-progress{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--blush), #c9a090);
+    z-index:200;
+    transition:width .1s linear;
+    border-radius:0 2px 2px 0;
+  }
+
   /* ============ NAV ============ */
   nav{
     background:var(--black); color:var(--white);
@@ -92,66 +101,9 @@
     width:0; height:1.5px; background:var(--blush);
     transition:width .3s cubic-bezier(.16,1,.3,1);
   }
-  .nav-links a:hover::after{width:100%;}
-
-  /* Search icon — right of nav-links */
-  .nav-search{
-    position:relative;
-    display:flex; align-items:center;
-    flex-shrink:0;
-  }
-  .search-toggle-btn{
-    width:38px; height:38px; border-radius:50%;
-    background:rgba(255,255,255,.1);
-    border:none; cursor:pointer;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--white); font-size:.9rem;
-    transition:background .3s ease, transform .3s ease, color .3s ease;
-    flex-shrink:0;
-  }
-  .search-toggle-btn:hover{background:var(--blush); color:var(--black); transform:scale(1.1);}
-  .nav-search-box{
-    position:absolute; top:50%; right:46px;
-    transform:translateY(-50%) scaleX(0);
-    transform-origin:right;
-    width:260px;
-    background:var(--white);
-    border-radius:999px;
-    padding:9px 18px;
-    font-family:var(--font-body); font-size:.88rem;
-    color:var(--black); border:none;
-    box-shadow:0 8px 28px rgba(0,0,0,.22);
-    transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease;
-    opacity:0; pointer-events:none;
-  }
-  .nav-search-box.open{
-    transform:translateY(-50%) scaleX(1);
-    opacity:1; pointer-events:auto;
-  }
-  .nav-search-box:focus{outline:none;}
-  .nav-search-box::placeholder{color:#8a8378;}
-  .nav-search-results{
-    position:absolute; top:calc(100% + 52px); right:0;
-    width:260px;
-    background:var(--white);
-    border-radius:18px;
-    box-shadow:0 16px 40px rgba(0,0,0,.28);
-    overflow:hidden;
-    opacity:0; transform:translateY(-10px) scale(.97);
-    pointer-events:none;
-    transition:opacity .35s cubic-bezier(.16,1,.3,1), transform .35s cubic-bezier(.16,1,.3,1);
-  }
-  .nav-search-results.show{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
-  .nav-search-results a{
-    display:flex; align-items:center; gap:10px;
-    padding:13px 20px; color:var(--black); font-size:.9rem; font-weight:500;
-    transition:background .22s ease, padding-left .22s ease;
-    border-bottom:1px solid rgba(0,0,0,.05);
-  }
-  .nav-search-results a:last-child{border-bottom:none;}
-  .nav-search-results a:hover{background:var(--blush-soft); padding-left:28px;}
-  .nav-search-results a i{font-size:.8rem; color:#8a8378; width:14px;}
-  .nav-search-results .no-result{padding:14px 20px; color:#8a8378; font-size:.88rem; font-style:italic;}
+  .nav-links a:hover::after,
+  .nav-links a.active::after{width:100%;}
+  .nav-links a.active{color:var(--blush);}
 
   .nav-toggle{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none;}
   .nav-toggle span{width:24px; height:2px; background:var(--white); transition:transform .35s cubic-bezier(.16,1,.3,1), opacity .35s ease;}
@@ -711,6 +663,22 @@
   /* ============ SECTION WRAP (for grid2 / skills-grid inside wrap) ============ */
   .section-wrap{padding:0 6vw;}
 
+  /* ============ BACK TO TOP ============ */
+  .back-top{
+    position:fixed; bottom:28px; right:28px;
+    width:46px; height:46px; border-radius:50%;
+    background:var(--black); color:var(--white);
+    border:2px solid var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.9rem; cursor:pointer;
+    opacity:0; transform:translateY(14px);
+    transition:opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1), background .3s ease, color .3s ease;
+    z-index:90;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+  }
+  .back-top.show{opacity:1; transform:translateY(0);}
+  .back-top:hover{background:var(--blush); color:var(--black); border-color:var(--blush);}
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 880px){
     .nav-links{
@@ -758,6 +726,11 @@
 </head>
 <body>
 
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<!-- Back to top -->
+<button class="back-top" id="backTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
 <!-- Cursor glow -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -776,13 +749,6 @@
       <a href="https://github.com/SomeshGouda" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
       <a href="https://www.instagram.com/somesh___09/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
-  </div>
-
-  <!-- Search icon sits just before nav-links text, after logo -->
-  <div class="nav-search" id="navSearch">
-    <button class="search-toggle-btn" id="searchToggleBtn" aria-label="Search"><i class="fas fa-search"></i></button>
-    <input class="nav-search-box" type="text" id="navSearchInput" placeholder="Search sections..." autocomplete="off" aria-label="Search sections">
-    <div class="nav-search-results" id="navSearchResults"></div>
   </div>
 
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -1131,54 +1097,35 @@
     '.reveal, .reveal-stagger, .grid-card, .skill-card, .job-card, .title-bar, .exp-card'
   ).forEach(el => io.observe(el));
 
-  /* ---- Sticky nav ---- */
-  const siteNav = document.getElementById('siteNav');
-  window.addEventListener('scroll', () => {
-    siteNav.classList.toggle('scrolled', window.scrollY > 12);
-  });
-
   /* ---- Year ---- */
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  /* ---- Nav search ---- */
-  const sections = [
-    { label:'About',      id:'about',      icon:'fa-user' },
-    { label:'Experience', id:'experience', icon:'fa-briefcase' },
-    { label:'Education',  id:'education',  icon:'fa-graduation-cap' },
-    { label:'Skills',     id:'skills',     icon:'fa-tools' },
-    { label:'Contact',    id:'contact',    icon:'fa-envelope' }
-  ];
-  const navSearchInput   = document.getElementById('navSearchInput');
-  const navSearchResults = document.getElementById('navSearchResults');
+  /* ---- Scroll progress + back to top + active nav ---- */
+  const siteNav   = document.getElementById('siteNav');
+  const scrollBar = document.getElementById('scrollProgress');
+  const backTop   = document.getElementById('backTop');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sectionEls = ['about','experience','education','skills','contact']
+    .map(id => document.getElementById(id)).filter(Boolean);
 
-  function renderResults(value){
-    navSearchResults.innerHTML = '';
-    if(!value){ navSearchResults.classList.remove('show'); return; }
-    const matches = sections.filter(s => s.label.toLowerCase().includes(value));
-    if(matches.length){
-      matches.forEach(s => {
-        const a = document.createElement('a');
-        a.href = '#' + s.id;
-        a.innerHTML = `<i class="fas ${s.icon}"></i>${s.label}`;
-        a.addEventListener('click', () => {
-          navSearchResults.classList.remove('show');
-          navSearchInput.value = '';
-          closeMenu();
-        });
-        navSearchResults.appendChild(a);
-      });
-    } else {
-      const d = document.createElement('div');
-      d.className = 'no-result';
-      d.textContent = 'No section found';
-      navSearchResults.appendChild(d);
-    }
-    navSearchResults.classList.add('show');
-  }
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const max = document.body.scrollHeight - window.innerHeight;
+    scrollBar.style.width = (scrolled / max * 100) + '%';
+    siteNav.classList.toggle('scrolled', scrolled > 12);
+    backTop.classList.toggle('show', scrolled > 400);
 
-  navSearchInput.addEventListener('input', e => renderResults(e.target.value.trim().toLowerCase()));
-  navSearchInput.addEventListener('focus', e => { if(e.target.value.trim()) renderResults(e.target.value.trim().toLowerCase()); });
-  document.addEventListener('click', e => { if(!e.target.closest('.nav-search')) navSearchResults.classList.remove('show'); });
+    // Active nav highlight
+    let current = '';
+    sectionEls.forEach(sec => {
+      if(scrolled >= sec.offsetTop - 120) current = sec.id;
+    });
+    navAnchors.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
   /* ---- Typewriter hero ---- */
   function typeWriter(){
