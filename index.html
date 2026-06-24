@@ -135,14 +135,33 @@
     font-size:clamp(2.6rem, 7vw, 6.2rem);
     line-height:0.98; letter-spacing:-0.02em;
     word-break:break-word;
+    opacity:0; transform:translateY(28px);
+    transition:opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1);
   }
-  .hero-left h1 .letter{
-    display:inline-block;
-    opacity:0;
-    transform:translateY(20px) rotate(4deg);
-    animation:letterIn .5s cubic-bezier(.16,1,.3,1) forwards;
+  /* CTA row hidden by default */
+  .hero-cta-row{
+    display:flex; gap:14px; flex-wrap:wrap;
+    opacity:0; transform:translateY(22px);
+    transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
   }
-  @keyframes letterIn{to{opacity:1; transform:translateY(0) rotate(0deg);}}
+  /* Badge hidden by default */
+  .hero-badge{
+    position:absolute; bottom:28px; left:28px;
+    background:var(--black); color:var(--white);
+    padding:14px 20px; border-radius:14px;
+    font-size:.82rem; font-weight:600; font-family:var(--font-display);
+    border:1.5px solid var(--white);
+    z-index:2; backdrop-filter:blur(8px);
+    opacity:0; transform:translateY(14px);
+    transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+  }
+  .hero-badge span{display:block; font-size:1.1rem; font-weight:800; margin-top:2px;}
+
+  /* Visible state for all three */
+  .hero-visible{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+  }
 
   /* ---- Hero CTA row ---- */
   .hero-cta-row{display:flex; gap:14px; flex-wrap:wrap;}
@@ -157,12 +176,7 @@
     text-decoration:none !important;
     position:relative; overflow:hidden;
     transition:transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s, background .4s ease, color .3s ease, border-color .3s ease;
-    opacity:0; transform:translateY(18px);
-    animation:fadeUp .7s cubic-bezier(.16,1,.3,1) forwards;
   }
-  .hero-cta:nth-child(1){animation-delay:1.4s;}
-  .hero-cta:nth-child(2){animation-delay:1.6s;}
-  .hero-cta:nth-child(3){animation-delay:1.8s;}
   .hero-cta i{font-size:.82rem; transition:transform .4s cubic-bezier(.16,1,.3,1);}
   .hero-cta:hover{
     background:var(--blush); color:var(--black);
@@ -182,18 +196,6 @@
     border:4px solid #fff; box-sizing:border-box;
     opacity:0; animation:fadeIn 1.4s cubic-bezier(.16,1,.3,1) forwards .3s;
   }
-  .hero-badge{
-    position:absolute; bottom:28px; left:28px;
-    background:var(--black); color:var(--white);
-    padding:14px 20px; border-radius:14px;
-    font-size:.82rem; font-weight:600; font-family:var(--font-display);
-    border:1.5px solid var(--white);
-    opacity:0; transform:translateY(14px);
-    animation:fadeUp .8s cubic-bezier(.16,1,.3,1) forwards 1.6s;
-    z-index:2; backdrop-filter:blur(8px);
-  }
-  .hero-badge span{display:block; font-size:1.1rem; font-weight:800; margin-top:2px;}
-  @keyframes fadeUp{to{opacity:1; transform:translateY(0);}}
   @keyframes fadeIn{to{opacity:1;}}
 
   .tagline-bar{
@@ -758,8 +760,8 @@
 <section class="hero">
   <div class="hero-left">
     <div>
-      <h1><span id="typewriter"></span></h1>
-      <div class="hero-cta-row">
+      <h1 id="heroName">Somesh<br>Gouda</h1>
+      <div class="hero-cta-row" id="heroCta">
         <a class="hero-cta" href="#about">
           <i class="fas fa-hand-point-down"></i><span>Know More</span>
         </a>
@@ -773,7 +775,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-badge">
+    <div class="hero-badge" id="heroBadge">
       Aspiring Data Analyst
       <span>Open to Opportunities</span>
     </div>
@@ -1127,32 +1129,12 @@
 
   backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-  /* ---- Typewriter hero ---- */
-  function typeWriter(){
-    const el = document.getElementById('typewriter');
-    if(!el) return;
-    const lines = ['Somesh', 'Gouda'];
-    let lineIndex = 0, charIndex = 0;
-    function step(){
-      if(lineIndex < lines.length){
-        if(charIndex < lines[lineIndex].length){
-          const span = document.createElement('span');
-          span.className = 'letter';
-          span.textContent = lines[lineIndex].charAt(charIndex);
-          span.style.animationDelay = (charIndex * 0.08) + 's';
-          el.appendChild(span);
-          charIndex++;
-          setTimeout(step, 160);
-        } else if(lineIndex < lines.length - 1){
-          el.appendChild(document.createElement('br'));
-          lineIndex++; charIndex = 0;
-          setTimeout(step, 320);
-        } else { lineIndex++; }
-      }
-    }
-    setTimeout(step, 700);
-  }
-  window.addEventListener('load', typeWriter);
+  /* ---- Hero grouped fade-in ---- */
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('heroName').classList.add('hero-visible'),  200);
+    setTimeout(() => document.getElementById('heroCta').classList.add('hero-visible'),   900);
+    setTimeout(() => document.getElementById('heroBadge').classList.add('hero-visible'), 1600);
+  });
 
   /* ---- Hover tilt on cards ---- */
   document.querySelectorAll('.grid-card, .skill-card, .info-card, .exp-card').forEach(card => {
