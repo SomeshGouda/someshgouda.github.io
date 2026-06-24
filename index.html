@@ -190,48 +190,20 @@
 
   .hero-right{
     flex:1; position:relative; overflow:hidden; min-height:80vh;
+    background-color:#000;
     border:4px solid #fff; box-sizing:border-box;
     opacity:0; animation:fadeIn 1.4s cubic-bezier(.16,1,.3,1) forwards .3s;
   }
-  /* Photo slider */
-  .hero-slider{
-    display:flex; height:100%; width:100%;
-    transition:transform .6s cubic-bezier(.16,1,.3,1);
+  .pan-img{
+    position:absolute; top:0; left:0;
+    height:100%; width:auto; min-width:100%;
+    object-fit:cover;
+    cursor:grab;
+    user-select:none;
+    touch-action:pan-x;
+    transition:left .05s linear;
   }
-  .hero-slide{
-    min-width:100%; height:100%;
-    background-color:#000;
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position:center center;
-    flex-shrink:0;
-  }
-  /* Slider dots */
-  .slider-dots{
-    position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
-    display:flex; gap:8px; z-index:5;
-  }
-  .slider-dot{
-    width:8px; height:8px; border-radius:50%;
-    background:rgba(255,255,255,.45);
-    border:none; cursor:pointer; padding:0;
-    transition:background .3s ease, transform .3s ease;
-  }
-  .slider-dot.active{background:#fff; transform:scale(1.3);}
-  /* Slider arrows — visible on mobile */
-  .slider-arrow{
-    position:absolute; top:50%; transform:translateY(-50%);
-    width:36px; height:36px; border-radius:50%;
-    background:rgba(0,0,0,.45); color:#fff;
-    border:1.5px solid rgba(255,255,255,.3);
-    display:flex; align-items:center; justify-content:center;
-    font-size:.8rem; cursor:pointer; z-index:5;
-    transition:background .3s ease;
-    backdrop-filter:blur(4px);
-  }
-  .slider-arrow:hover{background:rgba(0,0,0,.7);}
-  .slider-prev{left:12px;}
-  .slider-next{right:12px;}
+  .pan-img:active{ cursor:grabbing; }
   @keyframes fadeIn{to{opacity:1;}}
 
   .tagline-bar{
@@ -345,6 +317,7 @@
     flex:1; min-width:300px; min-height:280px;
     border:2px solid var(--white); border-left:none;
     position:relative; overflow:hidden;
+    background:#000;
   }
   .split-photo::after{
     content:'';
@@ -582,8 +555,9 @@
     display:flex; align-items:center; justify-content:center;
     font-size:.9rem; flex-shrink:0;
   }
-  .cert-text strong{display:block; font-size:.93rem; font-weight:700; color:var(--black); margin-bottom:3px;}
-  .cert-text span{font-size:.83rem; color:var(--text-soft); display:block; margin-bottom:2px;}
+  .cert-text strong{display:block; font-size:.93rem; font-weight:700; color:var(--black); margin-bottom:4px;}
+  .cert-text .cert-desc{font-size:.82rem; color:var(--text-soft); margin-bottom:10px; line-height:1.5;}
+  .cert-text .project-link{display:inline-flex;}
 
   /* ============ SKILLS (compact) ============ */
   .skill-card{
@@ -771,6 +745,19 @@
 <!-- Cursor glow -->
 <div class="cursor-glow" id="cursorGlow"></div>
 
+<!-- Resume popup -->
+<div id="resumePopup" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:999; align-items:center; justify-content:center; backdrop-filter:blur(6px);">
+  <div style="background:var(--cream); border-radius:20px; padding:40px 36px; max-width:360px; width:90%; text-align:center; position:relative; box-shadow:0 24px 60px rgba(0,0,0,.35); animation:fadeUp .5s cubic-bezier(.16,1,.3,1);">
+    <button onclick="document.getElementById('resumePopup').style.display='none'" style="position:absolute; top:14px; right:16px; background:none; border:none; font-size:1.2rem; cursor:pointer; color:#5a564f;">✕</button>
+    <div style="font-size:2.5rem; margin-bottom:12px;">📄</div>
+    <h3 style="font-family:var(--font-display); font-weight:700; font-size:1.3rem; margin-bottom:10px;">Resume & CV</h3>
+    <p style="font-size:.9rem; color:var(--text-soft); margin-bottom:24px; line-height:1.6;">Resume will be uploaded soon.<br>Please check back later or contact directly.</p>
+    <a href="#contact" onclick="document.getElementById('resumePopup').style.display='none'" style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:var(--black); color:#fff; border-radius:999px; font-weight:600; font-size:.9rem; text-decoration:none; transition:transform .3s ease, box-shadow .3s ease;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 22px rgba(0,0,0,.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <i class="fas fa-envelope"></i> Contact Me
+    </a>
+  </div>
+</div>
+
 <!-- ============ NAV ============ -->
 <nav id="siteNav">
   <div class="logo">Portfolio</div>
@@ -801,9 +788,9 @@
         <a class="hero-cta" href="#about">
           <i class="fas fa-hand-point-down"></i><span>Know More</span>
         </a>
-        <a class="hero-cta" href="Somesh_Gouda_Resume.pdf" download="Somesh_Gouda_Resume.pdf">
-          <i class="fas fa-download"></i><span>Resume & CV</span>
-        </a>
+        <button class="hero-cta" onclick="document.getElementById('resumePopup').style.display='flex'">
+          <i class="fas fa-file-alt"></i><span>Resume & CV</span>
+        </button>
         <a class="hero-cta" href="#contact">
           <i class="fas fa-envelope"></i><span>Contact</span>
         </a>
@@ -811,18 +798,7 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-slider" id="heroSlider">
-      <div class="hero-slide" style="background-image:url('profilee.jpg');"></div>
-      <div class="hero-slide" style="background-image:url('workspace.jpg');"></div>
-    </div>
-    <!-- Arrows -->
-    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-    <!-- Dots -->
-    <div class="slider-dots" id="sliderDots">
-      <button class="slider-dot active" data-index="0"></button>
-      <button class="slider-dot" data-index="1"></button>
-    </div>
+    <img class="pan-img" id="heroPan" src="profilee.jpg" alt="Somesh Gouda" draggable="false">
     <div class="hero-badge" id="heroBadge">
       Aspiring Data Analyst
       <span>Open to Opportunities</span>
@@ -903,16 +879,7 @@
     </div>
   </div>
   <div class="split-photo">
-    <div class="hero-slider" id="expSlider">
-      <div class="hero-slide" style="background-image:url('profilee.jpg');"></div>
-      <div class="hero-slide" style="background-image:url('workspace.jpg');"></div>
-    </div>
-    <button class="slider-arrow slider-prev" id="expPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-    <button class="slider-arrow slider-next" id="expNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-    <div class="slider-dots" id="expDots">
-      <button class="slider-dot active" data-index="0"></button>
-      <button class="slider-dot" data-index="1"></button>
-    </div>
+    <img class="pan-img" id="expPan" src="workspace.jpg" alt="Workspace" draggable="false">
   </div>
 </section>
 
@@ -1194,39 +1161,6 @@
 
   backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-  /* ---- Photo sliders (hero + experience) ---- */
-  function makeSlider(sliderId, prevId, nextId, dotsId, autoplay){
-    const slider = document.getElementById(sliderId);
-    const dots   = document.querySelectorAll('#' + dotsId + ' .slider-dot');
-    const prev   = document.getElementById(prevId);
-    const next   = document.getElementById(nextId);
-    if(!slider) return;
-    const total = slider.children.length;
-    let cur = 0;
-
-    function goTo(n){
-      cur = (n + total) % total;
-      slider.style.transform = `translateX(-${cur * 100}%)`;
-      dots.forEach((d,i) => d.classList.toggle('active', i === cur));
-    }
-
-    if(prev) prev.addEventListener('click', () => goTo(cur - 1));
-    if(next) next.addEventListener('click', () => goTo(cur + 1));
-    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
-
-    // Touch swipe
-    let tx = 0;
-    slider.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
-    slider.addEventListener('touchend',   e => {
-      const diff = tx - e.changedTouches[0].clientX;
-      if(Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
-    }, {passive:true});
-
-    if(autoplay) setInterval(() => goTo(cur + 1), autoplay);
-  }
-
-  makeSlider('heroSlider', 'sliderPrev', 'sliderNext', 'sliderDots', 4000);
-  makeSlider('expSlider',  'expPrev',    'expNext',    'expDots',    5000);
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('heroName').classList.add('hero-visible'),  200);
     setTimeout(() => document.getElementById('heroCta').classList.add('hero-visible'),   900);
