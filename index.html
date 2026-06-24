@@ -190,12 +190,48 @@
 
   .hero-right{
     flex:1; position:relative; overflow:hidden; min-height:80vh;
-    background-color:#000;
-    background-image:url('profilee.jpg');
-    background-repeat:no-repeat; background-size:cover; background-position:center center;
     border:4px solid #fff; box-sizing:border-box;
     opacity:0; animation:fadeIn 1.4s cubic-bezier(.16,1,.3,1) forwards .3s;
   }
+  /* Photo slider */
+  .hero-slider{
+    display:flex; height:100%; width:100%;
+    transition:transform .6s cubic-bezier(.16,1,.3,1);
+  }
+  .hero-slide{
+    min-width:100%; height:100%;
+    background-color:#000;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center;
+    flex-shrink:0;
+  }
+  /* Slider dots */
+  .slider-dots{
+    position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+    display:flex; gap:8px; z-index:5;
+  }
+  .slider-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,.45);
+    border:none; cursor:pointer; padding:0;
+    transition:background .3s ease, transform .3s ease;
+  }
+  .slider-dot.active{background:#fff; transform:scale(1.3);}
+  /* Slider arrows — visible on mobile */
+  .slider-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(0,0,0,.45); color:#fff;
+    border:1.5px solid rgba(255,255,255,.3);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.8rem; cursor:pointer; z-index:5;
+    transition:background .3s ease;
+    backdrop-filter:blur(4px);
+  }
+  .slider-arrow:hover{background:rgba(0,0,0,.7);}
+  .slider-prev{left:12px;}
+  .slider-next{right:12px;}
   @keyframes fadeIn{to{opacity:1;}}
 
   .tagline-bar{
@@ -307,8 +343,6 @@
   .split{display:flex; flex-wrap:wrap;}
   .split-photo{
     flex:1; min-width:300px; min-height:280px;
-    background:url('workspace.jpg') center center no-repeat;
-    background-size:cover;
     border:2px solid var(--white); border-left:none;
     position:relative; overflow:hidden;
   }
@@ -316,6 +350,7 @@
     content:'';
     position:absolute; inset:0;
     background:linear-gradient(to bottom, transparent 60%, rgba(14,14,14,.35) 100%);
+    pointer-events:none; z-index:1;
   }
 
   /* Experience cards — separate grid like edu */
@@ -465,8 +500,8 @@
   .grid-card p{font-size:.9rem; color:var(--text-soft);}
   .grid-card ul{margin:10px 0 20px 20px;}
   .grid-card li{line-height:1.8; color:var(--text-soft);}
-  .grid-card a{font-weight:600; color:var(--black);}
-  .grid-card a:hover{text-decoration:underline;}
+  .grid-card a:not(.project-link){font-weight:600; color:var(--black);}
+  .grid-card a:not(.project-link):hover{text-decoration:underline;}
 
   /* Animated underline accent on card */
   .grid-card .underline{
@@ -548,7 +583,7 @@
     font-size:.9rem; flex-shrink:0;
   }
   .cert-text strong{display:block; font-size:.93rem; font-weight:700; color:var(--black); margin-bottom:3px;}
-  .cert-text span{font-size:.83rem; color:var(--text-soft);}
+  .cert-text span{font-size:.83rem; color:var(--text-soft); display:block; margin-bottom:2px;}
 
   /* ============ SKILLS (compact) ============ */
   .skill-card{
@@ -744,6 +779,7 @@
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#experience" onclick="closeMenu()">Experience</a>
     <a href="#education" onclick="closeMenu()">Education</a>
+    <a href="#projects" onclick="closeMenu()">Projects</a>
     <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
     <div class="nav-social">
@@ -775,6 +811,18 @@
     </div>
   </div>
   <div class="hero-right">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide" style="background-image:url('profilee.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('workspace.jpg');"></div>
+    </div>
+    <!-- Arrows -->
+    <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <!-- Dots -->
+    <div class="slider-dots" id="sliderDots">
+      <button class="slider-dot active" data-index="0"></button>
+      <button class="slider-dot" data-index="1"></button>
+    </div>
     <div class="hero-badge" id="heroBadge">
       Aspiring Data Analyst
       <span>Open to Opportunities</span>
@@ -841,7 +889,7 @@
     </div>
     <div class="exp-card">
       <div class="underline"></div>
-      <span class="job-title-chip">🚀 Freelance & Independent Projects</span>
+      <span class="job-title-chip">🌐 SEO Manager & Freelancing</span>
       <div class="job-detail">
         <div class="org-line">Jan 2025 – May 2025</div>
         <ul>
@@ -854,7 +902,18 @@
       </div>
     </div>
   </div>
-  <div class="split-photo"></div>
+  <div class="split-photo">
+    <div class="hero-slider" id="expSlider">
+      <div class="hero-slide" style="background-image:url('profilee.jpg');"></div>
+      <div class="hero-slide" style="background-image:url('workspace.jpg');"></div>
+    </div>
+    <button class="slider-arrow slider-prev" id="expPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="slider-arrow slider-next" id="expNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <div class="slider-dots" id="expDots">
+      <button class="slider-dot active" data-index="0"></button>
+      <button class="slider-dot" data-index="1"></button>
+    </div>
+  </div>
 </section>
 
 <!-- ============ EDUCATION & CERTIFICATIONS ============ -->
@@ -887,16 +946,48 @@
     </div>
   </div>
 
-  <!-- PROJECTS -->
+  <!-- CERTIFICATIONS -->
   <div class="grid-card">
     <div class="underline"></div>
-    <h3>Projects</h3>
+    <h3>Certifications</h3>
 
+    <div class="cert-item">
+      <div class="cert-icon"><i class="fas fa-award"></i></div>
+      <div class="cert-text">
+        <strong>Certificate of Internship</strong>
+        <p class="cert-desc">Data Analytics Internship · Internship Studio (iStudio)<br>15 Jan 2026 – 21 Mar 2026 · Cert No: ISDTAI2729807</p>
+        <a class="project-link" href="Certificate_Internship.pdf" target="_blank"><i class="fas fa-eye"></i> View</a>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+      <div class="cert-text">
+        <strong>Certificate of Training</strong>
+        <p class="cert-desc">Data Analytics Training · iStudio<br>21 Mar 2026 · Cert No: ISDTAT2729807</p>
+        <a class="project-link" href="Certificate_Training.pdf" target="_blank"><i class="fas fa-eye"></i> View</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+</div>
+
+<!-- ============ PROJECTS ============ -->
+<div class="title-bar reveal" id="projects"><h2>Projects</h2></div>
+
+<div class="section-wrap">
+<section class="grid2 reveal-stagger">
+
+  <div class="grid-card">
+    <div class="underline"></div>
     <div class="project-entry">
       <span class="project-title"><span class="project-num">1.</span>Retail Sales Analysis</span>
       <ul>
         <li>Analyzed retail sales data using Python, Pandas, NumPy, and Matplotlib.</li>
         <li>Performed data cleaning, handled missing values, and identified revenue trends.</li>
+        <li>Generated visual reports to support business decision-making.</li>
       </ul>
       <a class="project-link" href="https://github.com/SomeshGouda/Retail-Sales-Analysis" target="_blank"><i class="fas fa-external-link-alt"></i> <span>View Project</span></a>
     </div>
@@ -904,16 +995,20 @@
     <div class="project-entry">
       <span class="project-title"><span class="project-num">2.</span>Excel Automation Project</span>
       <ul>
-        <li>Automated data processing and reporting tasks using Excel.</li>
-        <li>Created dynamic reports and dashboards for improved efficiency.</li>
+        <li>Automated data processing and reporting tasks using Excel macros and formulas.</li>
+        <li>Created dynamic dashboards improving reporting efficiency and accuracy.</li>
       </ul>
       <a class="project-link" href="https://github.com/SomeshGouda/Excel-Automation-Project" target="_blank"><i class="fas fa-external-link-alt"></i> <span>View Project</span></a>
     </div>
+  </div>
 
+  <div class="grid-card">
+    <div class="underline"></div>
     <div class="project-entry">
       <span class="project-title"><span class="project-num">3.</span>SQL Data Warehouse Project</span>
       <ul>
-        <li>Designed ETL workflows, fact & dimension tables for analytical reporting.</li>
+        <li>Designed and implemented a data warehouse solution using SQL.</li>
+        <li>Created ETL workflows and built fact & dimension tables for analytical reporting.</li>
       </ul>
       <a class="project-link" href="https://github.com/SomeshGouda/sql-data-warehouse-project" target="_blank"><i class="fas fa-external-link-alt"></i> <span>View Project</span></a>
     </div>
@@ -925,36 +1020,6 @@
         <li>Implemented book issue, return, and user management features.</li>
       </ul>
       <a class="project-link" href="https://sgonlinelibrary.infinityfreeapp.com/?i=1" target="_blank"><i class="fas fa-globe"></i> <span>Live Demo</span></a>
-    </div>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="grid-card">
-    <div class="underline"></div>
-    <h3>Certifications</h3>
-
-    <div class="cert-item">
-      <div class="cert-icon"><i class="fas fa-chart-bar"></i></div>
-      <div class="cert-text">
-        <strong>Data Analytics Training & Internship Program</strong>
-        <span>Python · SQL · Excel · Pandas · NumPy · Matplotlib · EDA · Data Visualization</span>
-      </div>
-    </div>
-
-    <div class="cert-item">
-      <div class="cert-icon"><i class="fas fa-database"></i></div>
-      <div class="cert-text">
-        <strong>Real-World Analytics Projects</strong>
-        <span>Data preprocessing · Reporting · Dashboard creation · EDA</span>
-      </div>
-    </div>
-
-    <div class="cert-item">
-      <div class="cert-icon"><i class="fas fa-award"></i></div>
-      <div class="cert-text">
-        <strong>Internship Completion Certificate</strong>
-        <span>Pending official issuance from Internship Studio (iStudio)</span>
-      </div>
     </div>
   </div>
 
@@ -1107,7 +1172,7 @@
   const scrollBar = document.getElementById('scrollProgress');
   const backTop   = document.getElementById('backTop');
   const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-  const sectionEls = ['about','experience','education','skills','contact']
+  const sectionEls = ['about','experience','education','projects','skills','contact']
     .map(id => document.getElementById(id)).filter(Boolean);
 
   window.addEventListener('scroll', () => {
@@ -1129,7 +1194,39 @@
 
   backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-  /* ---- Hero grouped fade-in ---- */
+  /* ---- Photo sliders (hero + experience) ---- */
+  function makeSlider(sliderId, prevId, nextId, dotsId, autoplay){
+    const slider = document.getElementById(sliderId);
+    const dots   = document.querySelectorAll('#' + dotsId + ' .slider-dot');
+    const prev   = document.getElementById(prevId);
+    const next   = document.getElementById(nextId);
+    if(!slider) return;
+    const total = slider.children.length;
+    let cur = 0;
+
+    function goTo(n){
+      cur = (n + total) % total;
+      slider.style.transform = `translateX(-${cur * 100}%)`;
+      dots.forEach((d,i) => d.classList.toggle('active', i === cur));
+    }
+
+    if(prev) prev.addEventListener('click', () => goTo(cur - 1));
+    if(next) next.addEventListener('click', () => goTo(cur + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
+
+    // Touch swipe
+    let tx = 0;
+    slider.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+    slider.addEventListener('touchend',   e => {
+      const diff = tx - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40) goTo(diff > 0 ? cur + 1 : cur - 1);
+    }, {passive:true});
+
+    if(autoplay) setInterval(() => goTo(cur + 1), autoplay);
+  }
+
+  makeSlider('heroSlider', 'sliderPrev', 'sliderNext', 'sliderDots', 4000);
+  makeSlider('expSlider',  'expPrev',    'expNext',    'expDots',    5000);
   window.addEventListener('load', () => {
     setTimeout(() => document.getElementById('heroName').classList.add('hero-visible'),  200);
     setTimeout(() => document.getElementById('heroCta').classList.add('hero-visible'),   900);
