@@ -769,14 +769,32 @@
     }
 
     .hero-badge{
+    position:absolute;
+
     left:50%;
-    transform:translateX(-50%);
-    width:88%;
     bottom:18px;
-    padding:14px 18px;
+
+    transform:translateX(-50%);
+
+    width:calc(100% - 40px);
+    max-width:340px;
+
+    padding:16px 20px;
+
+    border-radius:18px;
+
     text-align:center;
-    font-size:.82rem;
-    border-radius:16px;
+
+    box-sizing:border-box;
+
+    white-space:normal;
+    word-break:break-word;
+}
+
+.hero-badge span{
+    display:block;
+    margin-top:4px;
+    font-size:1rem;
 }
 
 .hero-badge span{
