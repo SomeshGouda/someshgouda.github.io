@@ -765,41 +765,36 @@
     }
 
     .hero-right{
-        min-height:340px;
+        min-height:360px; /* Thoda height badhaya taki photo aur text dono sahi dikhein */
+        position: relative;
     }
 
     .hero-badge{
-    position:absolute;
+        position:absolute;
+        left:50% !important;
+        bottom:18px !important;
+        transform:translateX(-50%) !important;
+        
+        /* Width aur bounding box ko fix kiya taki side se na kate */
+        width: calc(100% - 32px);
+        max-width: 280px; 
+        
+        padding:12px 16px;
+        border-radius:14px;
+        text-align:center;
+        box-sizing:border-box;
+        
+        white-space:normal;
+        word-break:keep-all; /* Words ko beech se tootne se rokega */
+    }
 
-    left:50%;
-    bottom:18px;
+    .hero-badge span{
+        display:block;
+        margin-top:4px;
+        font-size:0.9rem;
+        font-weight: 700;
+    }
 
-    transform:translateX(-50%);
-
-    width:calc(100% - 40px);
-    max-width:340px;
-
-    padding:16px 20px;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    box-sizing:border-box;
-
-    white-space:normal;
-    word-break:break-word;
-}
-
-.hero-badge span{
-    display:block;
-    margin-top:4px;
-    font-size:1rem;
-}
-
-.hero-badge span{
-    font-size:1rem;
-}
     .info-grid{
         gap:16px;
     }
@@ -825,7 +820,6 @@
     .social{
         align-self:flex-start;
     }
-
 }
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important; transition:none !important;}
