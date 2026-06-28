@@ -109,6 +109,7 @@
   .exp-grid{flex:1;min-width:300px;display:grid;grid-template-columns:1fr 1fr;gap:26px;background:var(--blush-soft);padding:clamp(36px,6vw,50px) 5vw;align-content:start;}
   .exp-card{background:var(--blush-soft);border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,.06);padding:32px 28px;position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.16,1,.3,1),background .5s,box-shadow .5s;}
   .exp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,var(--black));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1);}
+  .exp-card:hover::after{transform:scaleX(1);}
   .exp-card:hover{transform:translateY(-7px);box-shadow:0 20px 45px rgba(0,0,0,.13);background:var(--blush);}
   .exp-card .underline{width:40px;height:2px;background:var(--black);margin-bottom:18px;transform-origin:left;transform:scaleX(0);transition:transform .8s cubic-bezier(.16,1,.3,1) .1s;}
   .exp-card.in .underline{transform:scaleX(1);}
@@ -233,24 +234,21 @@
     }
     .hero-left>div{gap:28px;}
     
-    /* Photo Section Mobile Crop Fixes */
+    /* Photo Section Mobile Crop Adjustments */
     .hero-right {
       width: 100%;
       flex: none;
-      height: 380px; /* Framework tight padding balance for hair-to-shoulder layout */
+      height: 410px; /* Upar baal aur neeche kandhe tak exact fit karne ke liye wrapper height kam ki */
       border: 4px solid #fff; 
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
     }
     .hero-right .pan-img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
-      height: 140%; /* Scale vertical ratio down slightly to enforce zoom out effect */
+      height: 100%;
       object-fit: cover;
-      object-position: 50% 8%; /* Centers hair top bound and profile perfectly inside the border frame */
+      object-position: 50% 18%; /* Top center alignment badli taaki face frame vertical center-focused rahe */
     }
     .hero-badge {
       left: 50% !important;
@@ -288,7 +286,7 @@
     .logo{font-size:1.15rem;}
     .hero-left{padding:36px 6vw 32px;}
     .hero-left h1{font-size:clamp(2.4rem,13vw,3.2rem);}
-    .hero-right{height: 380px;}
+    .hero-right{height: 410px;} /* Exact match across small devices */
     .info-grid{gap:16px;}
     .info-card{padding:24px 22px;}
     .grid-card{padding:28px 24px;}
