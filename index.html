@@ -232,16 +232,21 @@
     .hero-left>div{gap:28px;}
     /* Photo comes AFTER name on mobile */
     /* Photo comes AFTER name on mobile */
+    /* Photo comes AFTER name on mobile */
     .hero-right {
       width: 100%;
       flex: none;
-      height: 500px; /* Ya fir aap 60vh rakh sakte ho jisse screenshot jaisa perfectly fit ho */
+      height: 520px; 
       border: none;
       border-top: 2px solid var(--white);
       position: relative;
+      overflow: hidden;
     }
     .hero-right .pan-img {
-      object-position: top center; /* Jisse aapka face perfectly center aur top se dikhe */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% center; /* Isse mobile par aapka face aur profile cut nahi hogi */
     }
     .hero-badge {
       left: 50% !important;
@@ -251,9 +256,18 @@
       max-width: 340px;
       text-align: center;
     }
-    /* CTA buttons — one per row on mobile */
-    .hero-cta-row{flex-direction:column;gap:10px;align-items:flex-start;}
-    .hero-cta{width:auto;min-width:180px;justify-content:center;}
+    /* CTA buttons — Full width and text aligned to start (left) */
+    .hero-cta-row {
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch; /* Buttons ko full width dene ke liye */
+      width: 100%;
+    }
+    .hero-cta {
+      width: 100%;
+      justify-content: flex-start; /* Text start (left) se shuru hoga */
+      padding: 14px 24px; /* Left-right space badhane ke liye */
+    }
 
     .split{flex-direction:column;}
     .split-photo{min-height:240px;order:-1;border-left:2px solid var(--white);border-bottom:none;}
