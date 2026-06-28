@@ -230,15 +230,14 @@
       align-items:flex-start;
     }
     .hero-left>div{gap:28px;}
-    /* Photo comes AFTER name on mobile */
-    /* Photo comes AFTER name on mobile */
-    /* Photo comes AFTER name on mobile */
+    
+    /* Photo Section Mobile View Fixes */
     .hero-right {
       width: 100%;
       flex: none;
-      height: 520px; 
-      border: none;
-      border-top: 2px solid var(--white);
+      height: 480px; 
+      border: 4px solid #fff; /* 1st image jesa white border wapas add kar diya */
+      box-sizing: border-box;
       position: relative;
       overflow: hidden;
     }
@@ -246,7 +245,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 65% center; /* Isse mobile par aapka face aur profile cut nahi hogi */
+      object-position: 50% center; /* Zoom position adjust ki taaki poora face frame ke andar perfect dikhe */
     }
     .hero-badge {
       left: 50% !important;
@@ -260,13 +259,13 @@
     .hero-cta-row {
       flex-direction: column;
       gap: 12px;
-      align-items: stretch; /* Buttons ko full width dene ke liye */
+      align-items: stretch;
       width: 100%;
     }
     .hero-cta {
       width: 100%;
-      justify-content: flex-start; /* Text start (left) se shuru hoga */
-      padding: 14px 24px; /* Left-right space badhane ke liye */
+      justify-content: flex-start;
+      padding: 14px 24px;
     }
 
     .split{flex-direction:column;}
@@ -277,8 +276,6 @@
     .info-grid{grid-template-columns:1fr;}
     .contact{flex-direction:column;}
     .contact-left{border-right:2px solid var(--white);border-bottom:none;}
-
-  
   }
 
   @media(max-width:600px){
@@ -286,7 +283,7 @@
     .logo{font-size:1.15rem;}
     .hero-left{padding:36px 6vw 32px;}
     .hero-left h1{font-size:clamp(2.4rem,13vw,3.2rem);}
-    .hero-right{min-height:55vw;max-height:65vw;}
+    .hero-right{height: 440px;} /* Mobile screens par frame height perfect maintain karne ke liye */
     .info-grid{gap:16px;}
     .info-card{padding:24px 22px;}
     .grid-card{padding:28px 24px;}
@@ -302,7 +299,6 @@
 <button class="back-top" id="backTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 <div class="cursor-glow" id="cursorGlow"></div>
 
-<!-- Resume popup -->
 <div id="resumePopup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(6px);">
   <div style="background:var(--cream);border-radius:20px;padding:40px 36px;max-width:360px;width:90%;text-align:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.35);">
     <button onclick="document.getElementById('resumePopup').style.display='none'" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:#5a564f;">✕</button>
@@ -318,7 +314,6 @@
   </div>
 </div>
 
-<!-- NAV -->
 <nav id="siteNav">
   <div class="logo">Portfolio</div>
   <div class="nav-links" id="navLinks">
@@ -337,7 +332,6 @@
   <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div>
@@ -359,7 +353,6 @@
   <h2>Aspiring Data Analyst | Turning Raw Data into Actionable Business Insights</h2>
 </div>
 
-<!-- INFO -->
 <section class="info-grid reveal-stagger">
   <a class="info-card" href="#contact">
     <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
@@ -379,12 +372,10 @@
   </a>
 </section>
 
-<!-- SUMMARY -->
 <section class="summary reveal">
   <p>Aspiring Data Analyst passionate about turning data into meaningful insights. Equipped with a BCA background and hands-on experience in Python, SQL, Excel, Pandas, and Power BI. Experienced in data cleaning, exploratory data analysis, dashboard creation, and data visualization. Dedicated to leveraging analytical skills to solve real-world problems and support data-driven decision-making.</p>
 </section>
 
-<!-- EXPERIENCE -->
 <div class="title-bar reveal"><h2>Experience</h2></div>
 <section class="split" id="experience">
   <div class="exp-grid reveal-stagger">
@@ -392,7 +383,7 @@
       <div class="underline"></div>
       <span class="job-title-chip">💼 Data Analyst Intern</span>
       <div class="job-detail">
-        <div class="org-line">iStudio &nbsp;|&nbsp; Remote Internship</div>
+        <div class="org-line">iStudio  |  Remote Internship</div>
         <ul>
           <li>Collected, cleaned, and analyzed datasets using Python, Pandas, and Excel to identify trends and patterns.</li>
           <li>Performed data cleaning and preprocessing by handling missing values, duplicates, and inconsistencies.</li>
@@ -422,7 +413,6 @@
   </div>
 </section>
 
-<!-- EDUCATION & CERTIFICATIONS -->
 <div class="title-bar reveal" id="education"><h2>Education & Certifications</h2></div>
 <div class="section-wrap">
 <section class="grid2 reveal-stagger">
@@ -430,11 +420,11 @@
     <div class="underline"></div>
     <h3>Education</h3>
     <span class="edu-title">🎓 Bachelor of Computer Applications (BCA)</span>
-    <div class="edu-info">Presidency College, Berhampur University<br>2023 – 2026 &nbsp;|&nbsp; <strong>Percentage: 85%</strong></div>
+    <div class="edu-info">Presidency College, Berhampur University<br>2023 – 2026  |  <strong>Percentage: 85%</strong></div>
     <span class="edu-title">📚 Higher Secondary Education (+2)</span>
-    <div class="edu-info">Polasara Science College, Polasara<br>2021 – 2023 &nbsp;|&nbsp; <strong>Percentage: 64%</strong></div>
+    <div class="edu-info">Polasara Science College, Polasara<br>2021 – 2023  |  <strong>Percentage: 64%</strong></div>
     <span class="edu-title">🏫 Secondary Education (10th)</span>
-    <div class="edu-info">Gopabandhu High School, Polasara<br>2020 – 2021 &nbsp;|&nbsp; <strong>Percentage: 79%</strong></div>
+    <div class="edu-info">Gopabandhu High School, Polasara<br>2020 – 2021  |  <strong>Percentage: 79%</strong></div>
   </div>
   <div class="grid-card">
     <div class="underline"></div>
@@ -459,7 +449,6 @@
 </section>
 </div>
 
-<!-- PROJECTS -->
 <div class="title-bar reveal" id="projects"><h2>Projects</h2></div>
 <div class="section-wrap">
 <section class="grid2 reveal-stagger">
@@ -521,7 +510,6 @@
 </section>
 </div>
 
-<!-- SKILLS -->
 <div class="title-bar reveal" id="skills"><h2>Skills</h2></div>
 <div class="section-wrap">
 <section class="skills-grid reveal-stagger">
@@ -537,7 +525,6 @@
 </section>
 </div>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-left reveal">
     <div class="eyebrow">Contact Me</div>
@@ -558,7 +545,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <h2>Somesh Gouda</h2>
   <div class="footer-grid">
