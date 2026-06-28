@@ -234,11 +234,12 @@
     }
     .hero-left>div{gap:28px;}
 
-    /* ── MOBILE PHOTO: baal se shoulder tak tight crop ── */
+    /* ── MOBILE PHOTO: 3:4 ratio, baal se shoulder tak crop ── */
     .hero-right{
       width:100%;
       flex:none;
-      height:460px;           /* thoda tall — poora face+baal+shoulder fit ho */
+      aspect-ratio:3/4;      /* 3:4 — profile pic jaisa ratio */
+      height:auto;           /* height auto so aspect-ratio works */
       border:4px solid #fff;
       box-sizing:border-box;
       position:relative;
@@ -246,9 +247,9 @@
     }
     .hero-right .pan-img{
       width:100%;
-      height:140%;           /* image ko zoom in karo taaki crop effect aaye */
+      height:100%;
       object-fit:cover;
-      object-position:50% 12%; /* 12% = baal ka top just frame ke andar, neeche shoulder cut */
+      object-position:50% 18%; /* 18% = thoda upar se — baal top frame mein, shoulder neeche */
       top:0;
       left:0;
       position:absolute;
@@ -290,7 +291,7 @@
     .logo{font-size:1.15rem;}
     .hero-left{padding:36px 6vw 32px;}
     .hero-left h1{font-size:clamp(2.4rem,13vw,3.2rem);}
-    .hero-right{height:460px;}
+    .hero-right{aspect-ratio:3/4;height:auto;}
     .info-grid{gap:16px;}
     .info-card{padding:24px 22px;}
     .grid-card{padding:28px 24px;}
