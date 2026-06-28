@@ -15,7 +15,10 @@
     --font-display:'Archivo',sans-serif; --font-body:'Inter',sans-serif;
     --font-edu:'Bodoni Moda',serif; --font-project:'Poppins',sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
+  *{
+    box-sizing:border-box;margin:0;padding:0;
+    -webkit-tap-highlight-color: transparent; /* Mobile tap blue effect fix */
+  }
   html{scroll-behavior:smooth;overflow-x:hidden;width:100%;}
   body{background:var(--cream);color:var(--black);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;width:100%;}
   a{color:inherit;text-decoration:none;}
@@ -51,7 +54,7 @@
   .hero-badge{position:absolute;bottom:28px;left:28px;background:var(--black);color:var(--white);padding:14px 20px;border-radius:14px;font-size:.82rem;font-weight:600;font-family:var(--font-display);border:1.5px solid var(--white);z-index:2;backdrop-filter:blur(8px);opacity:0;transform:translateY(14px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
   .hero-badge span{display:block;font-size:1.1rem;font-weight:800;margin-top:2px;}
   .hero-visible{opacity:1!important;transform:translateY(0)!important;}
-  .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-family:var(--font-display);font-size:.88rem;font-weight:700;border:1.5px solid rgba(255,255,255,.3);color:var(--white);background:rgba(255,255,255,.08);cursor:pointer;text-decoration:none!important;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,background .4s,color .3s,border-color .3s;}
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-family:var(--font-display);font-size:.88rem;font-weight:700;border:1.5px solid rgba(255,255,255,.3);color:var(--white);background:rgba(255,255,255,.08);cursor:pointer;text-decoration:none!important;user-select:none;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,background .4s,color .3s,border-color .3s;}
   .hero-cta i{font-size:.82rem;transition:transform .4s cubic-bezier(.16,1,.3,1);}
   .hero-cta:hover{background:var(--blush);color:var(--black);border-color:var(--blush);transform:translateY(-4px);box-shadow:0 12px 28px rgba(227,200,187,.22);}
   .hero-cta:hover i{transform:scale(1.2);}
@@ -231,12 +234,12 @@
     }
     .hero-left>div{gap:28px;}
     
-    /* Photo Section Mobile View Fixes */
+    /* Photo Section Mobile Crop Adjustments */
     .hero-right {
       width: 100%;
       flex: none;
-      height: 480px; 
-      border: 4px solid #fff; /* 1st image jesa white border wapas add kar diya */
+      height: 410px; /* Upar baal aur neeche kandhe tak exact fit karne ke liye wrapper height kam ki */
+      border: 4px solid #fff; 
       box-sizing: border-box;
       position: relative;
       overflow: hidden;
@@ -245,7 +248,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 50% center; /* Zoom position adjust ki taaki poora face frame ke andar perfect dikhe */
+      object-position: 50% 18%; /* Top center alignment badli taaki face frame vertical center-focused rahe */
     }
     .hero-badge {
       left: 50% !important;
@@ -283,7 +286,7 @@
     .logo{font-size:1.15rem;}
     .hero-left{padding:36px 6vw 32px;}
     .hero-left h1{font-size:clamp(2.4rem,13vw,3.2rem);}
-    .hero-right{height: 440px;} /* Mobile screens par frame height perfect maintain karne ke liye */
+    .hero-right{height: 410px;} /* Exact match across small devices */
     .info-grid{gap:16px;}
     .info-card{padding:24px 22px;}
     .grid-card{padding:28px 24px;}
