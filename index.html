@@ -234,12 +234,12 @@
     }
     .hero-left>div{gap:28px;}
 
-    /* ── MOBILE PHOTO: portrait ratio, hair+face+shoulder ── */
+    /* ── MOBILE PHOTO: landscape, face+hair+shoulder ── */
     .hero-right{
       width:100%;
       flex:none;
-      height:auto;
-      padding-bottom:110%;   /* tall portrait — almost square but taller, full body crop area */
+      height:260px;
+      padding-bottom:0;
       border:4px solid #fff;
       box-sizing:border-box;
       position:relative;
@@ -252,7 +252,7 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      object-position:50% 15%;   /* 15% = baalon ka top frame ke andar, shoulder neeche */
+      object-position:50% 15%;
       transform:none;
     }
     /* ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── */
@@ -292,7 +292,7 @@
     .logo{font-size:1.15rem;}
     .hero-left{padding:36px 6vw 32px;}
     .hero-left h1{font-size:clamp(2.4rem,13vw,3.2rem);}
-    .hero-right{padding-bottom:110%;}
+    .hero-right{height:260px;padding-bottom:0;}
     .info-grid{gap:16px;}
     .info-card{padding:24px 22px;}
     .grid-card{padding:28px 24px;}
