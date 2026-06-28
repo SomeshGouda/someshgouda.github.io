@@ -231,10 +231,25 @@
     }
     .hero-left>div{gap:28px;}
     /* Photo comes AFTER name on mobile */
-    .hero-right{
-      width:100%;flex:none;
-      min-height:60vw;max-height:70vw;
-      border:none;border-top:2px solid var(--white);
+    /* Photo comes AFTER name on mobile */
+    .hero-right {
+      width: 100%;
+      flex: none;
+      height: 500px; /* Ya fir aap 60vh rakh sakte ho jisse screenshot jaisa perfectly fit ho */
+      border: none;
+      border-top: 2px solid var(--white);
+      position: relative;
+    }
+    .hero-right .pan-img {
+      object-position: top center; /* Jisse aapka face perfectly center aur top se dikhe */
+    }
+    .hero-badge {
+      left: 50% !important;
+      bottom: 20px !important;
+      transform: translateX(-50%) translateY(0) !important;
+      width: 90%;
+      max-width: 340px;
+      text-align: center;
     }
     /* CTA buttons — one per row on mobile */
     .hero-cta-row{flex-direction:column;gap:10px;align-items:flex-start;}
